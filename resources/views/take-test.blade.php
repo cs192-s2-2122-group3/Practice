@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Title -->
-    <title>Practice</title>
+    <title>Practice - Manage Accounts</title>
 
     <!-- vendor css -->
     <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -14,7 +13,9 @@
     <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
     <link href="../lib/highlightjs/github.css" rel="stylesheet">
-    <link href="../lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="../lib/medium-editor/medium-editor.css" rel="stylesheet">
+    <link href="../lib/medium-editor/default.css" rel="stylesheet">
+    <link href="../lib/summernote/summernote-bs4.css" rel="stylesheet">
 
     <link href="../lib/jquery-toggles/toggles-full.css" rel="stylesheet">
     <link href="../lib/jt.timepicker/jquery.timepicker.css" rel="stylesheet">
@@ -43,9 +44,94 @@
     @include('layouts.rpanel')
     <!-- =========== END: RIGHT PANEL ============ -->
 
-
     <!-- =========== START: MAIN PANEL =========== -->
-    @yield('content')
+    <div class="br-mainpanel">
+        <!-- LINK TAGS -->
+        <div class="br-pageheader pd-y-15 pd-l-20">
+            <nav class="breadcrumb pd-0 mg-0 tx-12">
+            <a class="breadcrumb-item" href="\">Home</a>
+            <a class="breadcrumb-item" href="\">Pages</a>
+            <span class="breadcrumb-item active">Take Tests - (Insert Test Name)</span>
+            </nav>
+        </div>
+    
+        <!-- PAGE HEADER -->
+        <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
+            <h4 class="tx-gray-800 mg-b-5">CS 145 - EM Waves Go Brrt </h4>
+            <p class="mg-b-0">some test description, blah blah</p>
+        </div>
+    
+        <!-- PAGE BODY -->
+        <div class="br-pagebody">
+            <!-- CONTENT -->
+            <div class="br-section-wrapper">
+    
+                <!-- MULTIPLE CHOICE -->
+                <div class="form-layout form-layout-1 mg-b-10">
+                    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 1 - RB Multiple Choice</h6>
+                    <p class="mg-b-30 tx-gray-600">Question Details: Radio Box</p>
+    
+                    @for($i = 0; $i < 4; $i++)
+                        <div class="row col-lg-4">
+                            <label class="rdiobox">
+                                <input name="rdio" type="radio">
+                                <span>Radio Unchecked</span>
+                            </label>
+                        </div><!-- row -->
+                    @endfor
+                    
+                </div><!-- form-layout -->
+    
+                <!-- MULTIPLE CHOICE -->
+                <div class="form-layout form-layout-1 mg-b-10">
+                    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 2 - CB Multiple Choice</h6>
+                    <p class="mg-b-30 tx-gray-600">Question Details: Check Box</p>
+    
+                    @for($i = 0; $i < 4; $i++)
+                        <div class="row col-lg-4">
+                            <label class="ckbox">
+                                <input type="checkbox"><span>Checkbox Unchecked</span>
+                            </label>
+                        </div><!-- row -->
+                    @endfor
+                    
+                    <div class="row col-lg-4">
+                        <label class="ckbox">
+                            <input type="checkbox" checked><span>Checkbox Checked</span>
+                          </label>
+                    </div><!-- row -->
+    
+                </div><!-- form-layout -->
+    
+                <!-- ESSAY TYPE -->
+                <div class="form-layout form-layout-1 mg-b-10">
+                    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 3 - Essay</h6>
+                    <p class="mg-b-30 tx-gray-600">Question Details: Essay Type</p>
+    
+                    <div class="editable tx-16 bd pd-30 tx-inverse">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+    
+                </div><!-- form-layout -->
+    
+                <!-- ESSAY TYPE -->
+                <div class="form-layout form-layout-1 mg-b-10">
+                    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 4 - Essay</h6>
+                    <p class="mg-b-30 tx-gray-600">Question Details: Essay Type</p>
+    
+                    <div id="summernote">Hello, World!</div>
+    
+                </div><!-- form-layout -->
+                
+                <div class="pd-t-10">
+                    <button class="btn btn-info">Submit</button>
+                    <button class="btn btn-secondary">Return</button>
+                </div><!-- form-layout-footer -->
+    
+        </div>
+    </div>
+
     <!-- ============ END: MAIN PANEL ============ -->
 
     <script src="../lib/jquery/jquery.js"></script>
@@ -53,21 +139,13 @@
     <script src="../lib/bootstrap/bootstrap.js"></script>
     <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="../lib/moment/moment.js"></script>
+    <script src="../lib/summernote/summernote-bs4.min.js"></script>
     <script src="../lib/jquery-ui/jquery-ui.js"></script>
     <script src="../lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="../lib/peity/jquery.peity.js"></script>
-
-    <script src="../lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
-    <script src="../lib/d3/d3.js"></script>
-    <script src="../lib/rickshaw/rickshaw.min.js"></script>
-
     <script src="../lib/highlightjs/highlight.pack.js"></script>
-    <script src="../lib/select2/js/select2.min.js"></script>
-
-    <script src="../js/bracket.js"></script>
-    <script src="../js/ResizeSensor.js"></script>
-    <script src="../js/widgets.js"></script>
-
+    <script src="../lib/medium-editor/medium-editor.js"></script>
+    
     <script src="../lib/jquery-toggles/toggles.min.js"></script>
     <script src="../lib/jt.timepicker/jquery.timepicker.js"></script>
     <script src="../lib/spectrum/spectrum.js"></script>
@@ -75,38 +153,20 @@
     <script src="../lib/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
     <script src="../lib/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
 
+    <script src="../js/bracket.js"></script>
     <script>
       $(function(){
         'use strict'
 
-        $('.form-layout .form-control').on('focusin', function(){
-          $(this).closest('.form-group').addClass('form-group-active');
-        });
+        // Inline editor
+        var editor = new MediumEditor('.editable');
 
-        $('.form-layout .form-control').on('focusout', function(){
-          $(this).closest('.form-group').removeClass('form-group-active');
-        });
-
-        // Select2
-        $('#select2-a, #select2-b').select2({
-          minimumResultsForSearch: Infinity
-        });
-
-        $('#select2-a').on('select2:opening', function (e) {
-          $(this).closest('.form-group').addClass('form-group-active');
-        });
-
-        $('#select2-a').on('select2:closing', function (e) {
-          $(this).closest('.form-group').removeClass('form-group-active');
-        });
-
-      });
-    </script>
-
-    <script>
-      $(function(){
-        'use strict'
-
+        // Summernote editor
+        $('#summernote').summernote({
+          height: 150,
+          tooltip: false
+        })
+        
         // Toggles
         $('.toggle').toggles({
           on: true,
@@ -191,6 +251,6 @@
           });
         }
       });
-      </script>
+    </script>
   </body>
 </html>

@@ -23,7 +23,7 @@
             <!-- end: if statement -->
           </a>
 
-          <div class="dropdown-menu dropdown-menu-header wd-300 pd-0-force">
+          <div class="dropdown-menu dropdown-menu-header wd-350 pd-0-force">
             <div class="d-flex align-items-center justify-content-between pd-y-10 pd-x-20 bd-b bd-gray-200">
               <label class="tx-12 tx-info tx-uppercase tx-semibold tx-spacing-2 mg-b-0">Messages</label>
               <a href="" class="tx-11">+ Add New Message</a>

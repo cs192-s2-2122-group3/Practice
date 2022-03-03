@@ -79,10 +79,7 @@
           <a href="#" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="icon ion-more"></i></a>
           <div class="dropdown-menu pd-10">
             <nav class="nav nav-style-1 flex-column">
-              <a href="" class="nav-link">Share</a>
-              <a href="" class="nav-link">Download</a>
-              <div class="dropdown-divider"></div>
-              <a href="" class="nav-link">Edit</a>
+              <a href="" class="nav-link">New Account</a>
               <a href="" class="nav-link">Delete</a>
             </nav>
           </div><!-- dropdown-menu -->

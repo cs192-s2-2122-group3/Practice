@@ -12,6 +12,16 @@
     <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../lib/select2/css/select2.min.css" rel="stylesheet">
 
+    <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="../lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
+    <link href="../lib/highlightjs/github.css" rel="stylesheet">
+    <link href="../lib/jquery-toggles/toggles-full.css" rel="stylesheet">
+    <link href="../lib/jt.timepicker/jquery.timepicker.css" rel="stylesheet">
+    <link href="../lib/spectrum/spectrum.css" rel="stylesheet">
+    <link href="../lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="../lib/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../lib/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../css/bracket.css">
   </head>
@@ -53,38 +63,12 @@
 
             <div class="form-group">
             <label class="d-block tx-11 tx-uppercase tx-medium tx-spacing-1">Birthday</label>
-            <div class="row row-xs">
-                <div class="col-sm-4">
-                <select class="form-control select2" data-placeholder="Month" data-parsley-class-handler="#slWrapper1" data-parsley-errors-container="#slErrorContainer1" required>
-                    <option label="Month"></option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                </select>
-                </div><!-- col-4 -->
-                <div class="col-sm-4 mg-t-20 mg-sm-t-0">
-                <select class="form-control select2" data-placeholder="Day" data-parsley-class-handler="#slWrapper1" data-parsley-errors-container="#slErrorContainer1" required>
-                    <option label="Day"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                </div><!-- col-4 -->
-                <div class="col-sm-4 mg-t-20 mg-sm-t-0">
-                <select class="form-control select2" data-placeholder="Year" data-parsley-class-handler="#slWrapper1" data-parsley-errors-container="#slErrorContainer1" required>
-                    <option label="Year"></option>
-                    <option value="1">2010</option>
-                    <option value="2">2011</option>
-                    <option value="3">2012</option>
-                    <option value="4">2013</option>
-                    <option value="5">2014</option>
-                </select>
-                </div><!-- col-4 -->
-            </div><!-- row -->
+              <div class="mg-b-30">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                  <input type="text" class="form-control fc-datepicker" placeholder="MM/DD/YYYY" required>
+                </div>
+              </div><!-- wd-200 -->
             </div><!-- form-group -->
 
             <div class="form-group">
@@ -106,6 +90,22 @@
     <script src="../lib/popper.js/popper.js"></script>
     <script src="../lib/bootstrap/bootstrap.js"></script>
     <script src="../lib/select2/js/select2.min.js"></script>
+    
+    <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../lib/moment/moment.js"></script>
+    <script src="../lib/jquery-ui/jquery-ui.js"></script>
+    <script src="../lib/jquery-switchbutton/jquery.switchButton.js"></script>
+    <script src="../lib/peity/jquery.peity.js"></script>
+    <script src="../lib/highlightjs/highlight.pack.js"></script>
+    <script src="../lib/jquery-toggles/toggles.min.js"></script>
+    <script src="../lib/jt.timepicker/jquery.timepicker.js"></script>
+    <script src="../lib/spectrum/spectrum.js"></script>
+    <script src="../lib/jquery.maskedinput/jquery.maskedinput.js"></script>
+    <script src="../lib/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script src="../lib/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    
+    <script src="../js/bracket.js"></script>
+
     <script>
       $(function(){
         'use strict';
@@ -113,8 +113,28 @@
         $('.select2').select2({
           minimumResultsForSearch: Infinity
         });
+
+        // Datepicker
+        $('.fc-datepicker').datepicker({
+          showOtherMonths: true,
+          selectOtherMonths: true
+        });
+
+        $('#datepickerNoOfMonths').datepicker({
+          showOtherMonths: true,
+          selectOtherMonths: true,
+          numberOfMonths: 2
+        });
+
+        // Timepicker
+        $('#tpBasic').timepicker();
+        $('#tp2').timepicker({'scrollDefault': 'now'});
+        $('#tp3').timepicker();
+
+        $('#setTimeButton').on('click', function (){
+        $('#tp3').timepicker('setTime', new Date());
+      });
       });
     </script>
-
   </body>
 </html>

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+    public function test_page() {
+        return view('test-page');
+    }
+
     public function welcome() {
         return view('welcome');
     }
@@ -32,5 +36,21 @@ class PagesController extends Controller
 
     public function test_manager() {
         return view('test-manager');
+    }
+
+    public function take_test() {
+        return view('take-test');
+    }
+
+    public function edit_test() {
+        return view('edit-test');
+    }
+    
+    public function edit_course() {
+        return view('edit-course');
+    }
+
+    public function account_page() {
+        return view('account-page');
     }
 }

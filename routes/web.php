@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 */
 
+Route::get('/test-page', [PagesController::class,'test_page']);
+
 Route::get('/', [PagesController::class,'index']);
 Route::get('/home', [PagesController::class,'index']);
 Route::get('/welcome', [PagesController::class,'welcome']);
@@ -28,4 +30,7 @@ Route::get('/signup', [PagesController::class,'signup']);
 Route::get('/account-manager', [PagesController::class,'account_manager']);
 Route::get('/course-manager', [PagesController::class,'course_manager']);
 Route::get('/test-manager', [PagesController::class,'test_manager']);
-
+Route::get('/take-test', [PagesController::class,'take_test']);
+Route::get('/edit-test', [PagesController::class,'edit_test']);
+Route::get('/edit-course', [PagesController::class,'edit_course']);
+Route::get('/account-page', [PagesController::class,'account_page']);
