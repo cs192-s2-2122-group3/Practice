@@ -57,9 +57,40 @@
     
         <!-- PAGE HEADER -->
         <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-            <h4 class="tx-gray-800 mg-b-5">CS 145 - EM Waves Go Brrt </h4>
+            <h4 class="tx-gray-800 mg-b-5">CS 145 - EM Waves Go Brrt (Results)</h4>
             <p class="mg-b-0">some test description, blah blah</p>
         </div>
+
+        <style>
+        table, th, td {
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        th, td {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        </style>
+        
+        <body>
+        <table style="width:350px">
+            <tr>
+                <th>Subject</th>
+                <td>CS 145</td> 
+            </tr>
+            <tr>
+                <th>Topic</th>
+                <td>EM Waves Go Brrt</td>
+            </tr>
+            <tr>
+                <th>Score</th>
+                <td>4/4</td>
+            </tr>
+        </table>
+        </body>
+
     
         <!-- PAGE BODY -->
         <div class="br-pagebody">
@@ -71,8 +102,8 @@
                     <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 1 - RB Multiple Choice</h6>
                     <p class="mg-b-30 tx-gray-600">Question Details: Radio Box</p>
     
-                    @for($i = 0; $i < 4; $i++)
-                        <div class="row col-lg-4">
+                    @for($i = 0; $i < 3; $i++)
+                        <div class="row col-lg-3">
                             <label class="rdiobox">
                                 <input name="rdio" type="radio">
                                 <span>Radio Unchecked</span>
@@ -80,7 +111,21 @@
                         </div><!-- row -->
                     @endfor
 
-                    <p class="mg-b-30 tx-gray-600">Your answer is: Correct</p>
+                    <div class="row col-lg-3">
+                        <label class="rdiobox">
+                            <input name="rdio" type="radio" checked>
+                            <span>Radio Unchecked</span>
+                        </label>
+                    </div><!-- row -->
+
+                    <div class="form-layout form-layout-1 mg-b-5 mt-4">
+                        <p class="mg-b-10 tx-gray-600">Your answer is: <span style="color:green">Correct</span></p>
+                        <p class="mg-b-5 tx-gray-600">Explanation:</span></p>
+                        <ul>
+                            <li> The EM waves are yes. </li>
+                            <li> They are NOT no. </li>
+                        </ul>
+                    </div><!-- form-layout -->
 
                 </div><!-- form-layout -->
 
@@ -102,6 +147,14 @@
                             <input type="checkbox" checked><span>Checkbox Checked</span>
                           </label>
                     </div><!-- row -->
+
+                    <div class="form-layout form-layout-1 mg-b-5 mt-4">
+                        <p class="mg-b-10 tx-gray-600">Your answer is: <span style="color:green">Correct</span></p>
+                        <p class="mg-b-5 tx-gray-600">Explanation:</span></p>
+                        <ul>
+                            <li> Checked is correct. </li>
+                        </ul>
+                    </div><!-- form-layout -->
     
                 </div><!-- form-layout -->
     
@@ -110,10 +163,18 @@
                     <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 3 - Essay</h6>
                     <p class="mg-b-30 tx-gray-600">Question Details: Essay Type</p>
     
-                    <div class="editable tx-16 bd pd-30 tx-inverse">
+                    <div class="tx-16 bd pd-30 tx-inverse">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </div>
+
+                    <div class="form-layout form-layout-1 mg-b-5 mt-4">
+                        <p class="mg-b-10 tx-gray-600">Your answer is: <span style="color:green">Correct</span></p>
+                        <p class="mg-b-5 tx-gray-600">Comments:</span></p>
+                        <ul>
+                            <li> Good insights! </li>
+                        </ul>
+                    </div><!-- form-layout -->
     
                 </div><!-- form-layout -->
     
@@ -122,17 +183,50 @@
                     <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 4 - Essay</h6>
                     <p class="mg-b-30 tx-gray-600">Question Details: Essay Type</p>
     
-                    <div id="summernote">Hello, World!</div>
+                    <div class="tx-16 bd pd-30 tx-inverse">
+                        Hello World!
+                    </div>
+
+                    <div class="form-layout form-layout-1 mg-b-5 mt-4">
+                        <p class="mg-b-10 tx-gray-600">Your answer is: <span style="color:green">Correct</span></p>
+                        <p class="mg-b-5 tx-gray-600">Comments:</span></p>
+                        <ul>
+                            <li> Good insights! </li>
+                        </ul>
+                    </div><!-- form-layout -->
     
                 </div><!-- form-layout -->
                 
                 <div class="pd-t-10">
-                    <button class="btn btn-info">Submit</button>
-                    <button class="btn btn-secondary">Return</button>
+                    <button class="btn btn-info">Download as PDF</button>
+                    <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#verify-exit"> Return</a>
                 </div><!-- form-layout-footer -->
     
         </div>
     </div>
+
+    <!-- SMALL MODAL - EXIT -->
+    <div id="verify-exit" class="modal fade">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content bd-0 tx-14">
+          <div class="modal-header pd-x-20">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Exit?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pd-20">
+            <p class="mg-b-5">Are you sure you want to exit? You will no longer be able to review the correct answers. </p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a href="\test-manager" class="btn btn-info">Exit</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Review Answers</button>
+          </div>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+
+
 
     <!-- ============ END: MAIN PANEL ============ -->
 

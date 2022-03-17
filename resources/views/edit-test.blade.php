@@ -280,7 +280,7 @@
                     </div><!-- br-section-wrapper -->
                     
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-info mg-r-3">Publish</button>
+                        <button type="submit" class="btn btn-info mg-r-3" data-toggle="modal" data-target="#verify-publish">Save</button>
                         <button class="btn btn-secondary">Return</button>
                     </div><!-- btn-group -->
                     
@@ -288,6 +288,32 @@
     
         </div>
     </div>
+
+    <!-- SMALL MODAL - PUBLISH -->
+    <div id="verify-publish" class="modal fade">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content bd-0 tx-14">
+          <div class="modal-header pd-x-20">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Publish?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pd-20">
+            <p class="mg-b-5">Are you sure? Publishing this test will make it available to the students under this course. 
+                You may opt to save it in your drafts to continue editing later.
+            </p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a href="\test-manager" class="btn btn-info">Publish</a>
+            <a href="\test-manager" class="btn btn-secondary">Save as Draft</a>
+          </div>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+
+
+
 
     <!-- ============ END: MAIN PANEL ============ -->
 

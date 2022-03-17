@@ -125,13 +125,55 @@
                 </div><!-- form-layout -->
                 
                 <div class="pd-t-10">
-                    <button class="btn btn-info">Submit</button>
-                    <button class="btn btn-secondary">Return</button>
+                    <a href="" class="btn btn-info" data-toggle="modal" data-target="#verify-submit"> Submit</a>
+                    <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#verify-exit"> Return</a>
                 </div><!-- form-layout-footer -->
     
         </div>
     </div>
 
+    <!-- SMALL MODAL - SUBMIT -->
+    <div id="verify-submit" class="modal fade">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content bd-0 tx-14">
+          <div class="modal-header pd-x-20">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Get results?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pd-20">
+            <p class="mg-b-5">Are you sure you want to submit? You will no longer be able to change your answers once the form has been submitted. </p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a href="\test-results" class="btn btn-info">Submit</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Return</button>
+          </div>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+    
+    <!-- SMALL MODAL - EXIT -->
+    <div id="verify-exit" class="modal fade">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content bd-0 tx-14">
+          <div class="modal-header pd-x-20">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Exit?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pd-20">
+            <p class="mg-b-5">Are you sure you want to exit? You progress will not be saved. </p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a href="\test-manager" class="btn btn-info">Exit</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Answering</button>
+          </div>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+        
     <!-- ============ END: MAIN PANEL ============ -->
 
     <script src="../lib/jquery/jquery.js"></script>

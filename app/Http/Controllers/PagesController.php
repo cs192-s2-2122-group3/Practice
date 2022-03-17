@@ -50,7 +50,15 @@ class PagesController extends Controller
         return view('edit-course');
     }
 
+    public function test_results() {
+        return view('test-results');
+    }
+
     public function account_page() {
         return view('account-page');
+    }
+
+    public function modal_template() {
+        return view('modal-template');
     }
 }
