@@ -44,3 +44,4 @@ Route::get('/test-results', [PagesController::class,'test_results']);
 Route::get('/edit-course', [PagesController::class,'edit_course']);
 Route::get('/account-page', [PagesController::class,'account_page']);
 Route::get('/modal-template', [PagesController::class,'modal_template']);
+Route::get('/forgot-password', [PagesController::class,'forgot_password']);
