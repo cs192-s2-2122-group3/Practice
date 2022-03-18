@@ -98,7 +98,6 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        //dd($user->birth_date);
         
         return view('/account-edit', [
             'user' => $user,
@@ -130,20 +129,11 @@ class UsersController extends Controller
             'password'      => 'nullable|alpha_num|min:8',
         ]);
 
-        $user->update([
-                // names
-                'first_name'    => $request->input('first_name'),
-                'middle_name'   => $request->input('middle_name'),
-                'last_name'     => $request->input('last_name'),
-                'user_name'     => $request->input('user_name'),
-                // additional info
-                'birth_date'    => $request->date('birth_date'),
-                'role'          => $request->input('role'),
-                // account details
-                'email'         => $request->input('email'),
-                'password'      => ($request->input('password')) ?? Hash::make($request->input('password')),
-                'description'   => $request->input('description'),
-            ]);
+        $user->update(array_filter($request->all()));
+
+        if (!empty($request->input('password'))) {
+            $user->update([ 'password' => Hash::make($request->input('password')) ]);
+        }
 
         return redirect('/account-manager');
     }

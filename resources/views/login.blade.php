@@ -31,17 +31,10 @@
                     <input type="text" class="form-control" placeholder="Enter your email address" required>
                 </div><!-- form-group -->
 
-<<<<<<< HEAD
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Enter your password" required>
-                    <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
-                </div><!-- form-group -->
-=======
             <div class="form-group">
             <input type="password" class="form-control" placeholder="Enter your password" required>
             <a href="\forgot-password" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
             </div><!-- form-group -->
->>>>>>> 1b90a4b5bd2e2861c2cefa16ee6fa434469aad8b
 
                 <button type="submit" class="btn btn-info btn-block">Sign In</button>
             </form>
