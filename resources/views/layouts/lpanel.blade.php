@@ -1,40 +1,42 @@
 <div class="br-logo"><a href=""><span>[</span>Practice<span>]</span></a></div>
 <div class="br-sideleft overflow-y-auto">
-  <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
-  <div class="br-sideleft-menu">
-    
-    <!-- DASHBOARD -->
-    <a href="\" class="br-menu-link">
-      <div class="br-menu-item">
-        <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
-        <span class="menu-item-label">Dashboard</span>
-      </div><!-- menu-item -->
-    </a><!-- br-menu-link -->
+    <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
+    <div class="br-sideleft-menu">
 
-    <!-- MULTILINK -->
-    <a href="#" class="br-menu-link">
-      <div class="br-menu-item">
-        <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
-        <span class="menu-item-label">Pages</span>
-        <i class="menu-item-arrow fa fa-angle-down"></i>
-      </div><!-- menu-item -->
-    </a><!-- br-menu-link -->
-    <ul class="br-menu-sub nav flex-column">
-      <li class="nav-item"><a href="\welcome" class="nav-link">Welcome</a></li>
-      <li class="nav-item"><a href="\login" class="nav-link">Login</a></li>
-      <li class="nav-item"><a href="\signup" class="nav-link">Signup</a></li>
-      <li class="nav-item"><a href="\account-manager" class="nav-link">Account Management</a></li>
-      <li class="nav-item"><a href="\course-manager" class="nav-link">Course Management</a></li>
-      <li class="nav-item"><a href="\test-manager" class="nav-link">Test Management</a></li>
-      <li class="nav-item"><a href="\take-test" class="nav-link">Test Taking</a></li>
-      <li class="nav-item"><a href="\edit-test" class="nav-link">Test Editing</a></li>
-      <li class="nav-item"><a href="\test-results" class="nav-link">Test Results</a></li>
-      <li class="nav-item"><a href="\edit-course" class="nav-link">Course Editing</a></li>
-      <li class="nav-item"><a href="\account-page" class="nav-link">Account Page</a></li>
-    </ul>
-  </div><!-- br-sideleft-menu -->
-  
-<!--
+        <!-- DASHBOARD -->
+        <a href="\home" class="br-menu-link">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                <span class="menu-item-label">Dashboard</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+
+        <!-- MULTILINK -->
+        <a href="\" class="br-menu-link">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
+                <span class="menu-item-label">Pages</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+        <ul class="br-menu-sub nav flex-column">
+            <li class="nav-item"><a href="\welcome" class="nav-link">Welcome</a></li>
+            <li class="nav-item"><a href="\login" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="\signup" class="nav-link">Signup</a></li>
+            <li class="nav-item"><a href="\account-manager" class="nav-link">Account Management</a></li>
+            <li class="nav-item"><a href="\course-manager" class="nav-link">Course Management</a></li>
+            <li class="nav-item"><a href="\test-manager" class="nav-link">Test Management</a></li>
+            <li class="nav-item"><a href="\take-test" class="nav-link">Test Taking</a></li>
+            <li class="nav-item"><a href="\edit-test" class="nav-link">Test Editing</a></li>
+            <li class="nav-item"><a href="\test-results" class="nav-link">Test Results</a></li>
+            <li class="nav-item"><a href="\edit-course" class="nav-link">Course Editing</a></li>
+            <li class="nav-item"><a href="\account-page" class="nav-link">Account Page</a></li>
+            <li class="nav-item"><a href="\account-manager\create" class="nav-link">Create Account</a></li>
+            <li class="nav-item"><a href="\modal-template" class="nav-link">Modal Template</a></li>
+        </ul>
+    </div><!-- br-sideleft-menu -->
+
+    <!--
   <label class="sidebar-label pd-x-15 mg-t-25 mg-b-20 tx-info op-9">Information Summary</label>
 
   <div class="info-list">
@@ -72,5 +74,5 @@
   </div><!- - info-lst - ->
 -->
 
-  <br>
+    <br>
 </div><!-- br-sideleft -->

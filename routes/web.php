@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,21 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/test-page', [PagesController::class,'test_page']);
+// Admin account management
+Route::resource('/account-manager', UsersController::class);
+
+// Authentication: Login and Register
+Auth::routes();
+
+// Home Page
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [PagesController::class,'index']);
-Route::get('/home', [PagesController::class,'index']);
+// Route::get('/home', [PagesController::class,'index']);
 Route::get('/welcome', [PagesController::class,'welcome']);
-Route::get('/login', [PagesController::class,'login']);
+// Route::get('/login', [PagesController::class,'login']);
 Route::get('/signup', [PagesController::class,'signup']);
-Route::get('/account-manager', [PagesController::class,'account_manager']);
+// Route::get('/account-manager', [PagesController::class,'account_manager']);
 Route::get('/course-manager', [PagesController::class,'course_manager']);
 Route::get('/test-manager', [PagesController::class,'test_manager']);
 Route::get('/edit-test', [PagesController::class,'edit_test']);

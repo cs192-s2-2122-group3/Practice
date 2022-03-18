@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Title -->
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Practice</title>
 
     <!-- vendor css -->
@@ -25,24 +28,41 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../css/bracket.css">
-  </head>
+</head>
 
-  <body>
+<body>
+    @guest 
+        <div class="ht-65 bd bg-gray-100 pd-x-20 d-flex align-items-center justify-content-end">
+            <h4 class="mg-b-0 tx-uppercase tx-bold tx-spacing--2 tx-inverse tx-poppins mg-r-auto">Practice</h4>
 
-    <!-- ========== START: LEFT PANEL =========== -->
-    @include('layouts.lpanel')
-    <!-- ============ END: LEFT PANEL ============ -->
+            <ul class="nav nav-pills flex-column flex-md-row justify-content-end" role="tablist">
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @endif
 
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            </ul>
+        </div><!-- pd-10 -->
 
-    <!-- =========== START: HEAD PANEL =========== -->
-    @include('layouts.hpanel')
-    <!-- ============ END: HEAD PANEL ============ -->
+    @else
+        <!-- ========== START: LEFT PANEL =========== -->
+        @include('layouts.lpanel')
+        <!-- ============ END: LEFT PANEL ============ -->
 
+        <!-- =========== START: HEAD PANEL =========== -->
+        @include('layouts.hpanel')
+        <!-- ============ END: HEAD PANEL ============ -->
 
-    <!-- ========== START: RIGHT PANEL =========== -->
-    @include('layouts.rpanel')
-    <!-- =========== END: RIGHT PANEL ============ -->
-
+        <!-- ========== START: RIGHT PANEL =========== -->
+        @include('layouts.rpanel')
+        <!-- =========== END: RIGHT PANEL ============ -->
+    @endguest
 
     <!-- =========== START: MAIN PANEL =========== -->
     @yield('content')
@@ -76,121 +96,125 @@
     <script src="../lib/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
 
     <script>
-      $(function(){
-        'use strict'
+        $(function () {
+            'use strict'
 
-        $('.form-layout .form-control').on('focusin', function(){
-          $(this).closest('.form-group').addClass('form-group-active');
+            $('.form-layout .form-control').on('focusin', function () {
+                $(this).closest('.form-group').addClass('form-group-active');
+            });
+
+            $('.form-layout .form-control').on('focusout', function () {
+                $(this).closest('.form-group').removeClass('form-group-active');
+            });
+
+            // Select2
+            $('#select2-a, #select2-b').select2({
+                minimumResultsForSearch: Infinity
+            });
+
+            $('#select2-a').on('select2:opening', function (e) {
+                $(this).closest('.form-group').addClass('form-group-active');
+            });
+
+            $('#select2-a').on('select2:closing', function (e) {
+                $(this).closest('.form-group').removeClass('form-group-active');
+            });
+
         });
 
-        $('.form-layout .form-control').on('focusout', function(){
-          $(this).closest('.form-group').removeClass('form-group-active');
-        });
-
-        // Select2
-        $('#select2-a, #select2-b').select2({
-          minimumResultsForSearch: Infinity
-        });
-
-        $('#select2-a').on('select2:opening', function (e) {
-          $(this).closest('.form-group').addClass('form-group-active');
-        });
-
-        $('#select2-a').on('select2:closing', function (e) {
-          $(this).closest('.form-group').removeClass('form-group-active');
-        });
-
-      });
     </script>
 
     <script>
-      $(function(){
-        'use strict'
+        $(function () {
+            'use strict'
 
-        // Toggles
-        $('.toggle').toggles({
-          on: true,
-          height: 26
+            // Toggles
+            $('.toggle').toggles({
+                on: true,
+                height: 26
+            });
+
+            // Input Masks
+            $('#dateMask').mask('99/99/9999');
+            $('#phoneMask').mask('(999) 999-9999');
+            $('#ssnMask').mask('999-99-9999');
+
+            // Datepicker
+            $('.fc-datepicker').datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true
+            });
+
+            $('#datepickerNoOfMonths').datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                numberOfMonths: 2
+            });
+
+            // Time Picker
+            $('#tpBasic').timepicker();
+            $('#tp2').timepicker({
+                'scrollDefault': 'now'
+            });
+            $('#tp3').timepicker();
+
+            $('#setTimeButton').on('click', function () {
+                $('#tp3').timepicker('setTime', new Date());
+            });
+
+            // Color picker
+            $('#colorpicker').spectrum({
+                color: '#17A2B8'
+            });
+
+            $('#showAlpha').spectrum({
+                color: 'rgba(23,162,184,0.5)',
+                showAlpha: true
+            });
+
+            $('#showPaletteOnly').spectrum({
+                showPaletteOnly: true,
+                showPalette: true,
+                color: '#DC3545',
+                palette: [
+                    ['#1D2939', '#fff', '#0866C6', '#23BF08', '#F49917'],
+                    ['#DC3545', '#17A2B8', '#6610F2', '#fa1e81', '#72e7a6']
+                ]
+            });
+
+
+            // Rangeslider
+            if ($().ionRangeSlider) {
+                $('#rangeslider1').ionRangeSlider();
+
+                $('#rangeslider2').ionRangeSlider({
+                    min: 100,
+                    max: 1000,
+                    from: 550
+                });
+
+                $('#rangeslider3').ionRangeSlider({
+                    type: 'double',
+                    grid: true,
+                    min: 0,
+                    max: 1000,
+                    from: 200,
+                    to: 800,
+                    prefix: '$'
+                });
+
+                $('#rangeslider4').ionRangeSlider({
+                    type: 'double',
+                    grid: true,
+                    min: -1000,
+                    max: 1000,
+                    from: -500,
+                    to: 500,
+                    step: 250
+                });
+            }
         });
 
-        // Input Masks
-        $('#dateMask').mask('99/99/9999');
-        $('#phoneMask').mask('(999) 999-9999');
-        $('#ssnMask').mask('999-99-9999');
-
-        // Datepicker
-        $('.fc-datepicker').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true
-        });
-
-        $('#datepickerNoOfMonths').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true,
-          numberOfMonths: 2
-        });
-
-        // Time Picker
-        $('#tpBasic').timepicker();
-        $('#tp2').timepicker({'scrollDefault': 'now'});
-        $('#tp3').timepicker();
-
-        $('#setTimeButton').on('click', function (){
-          $('#tp3').timepicker('setTime', new Date());
-        });
-
-        // Color picker
-        $('#colorpicker').spectrum({
-          color: '#17A2B8'
-        });
-
-        $('#showAlpha').spectrum({
-          color: 'rgba(23,162,184,0.5)',
-          showAlpha: true
-        });
-
-        $('#showPaletteOnly').spectrum({
-            showPaletteOnly: true,
-            showPalette:true,
-            color: '#DC3545',
-            palette: [
-                ['#1D2939', '#fff', '#0866C6','#23BF08', '#F49917'],
-                ['#DC3545', '#17A2B8', '#6610F2', '#fa1e81', '#72e7a6']
-            ]
-        });
-
-
-        // Rangeslider
-        if($().ionRangeSlider) {
-          $('#rangeslider1').ionRangeSlider();
-
-          $('#rangeslider2').ionRangeSlider({
-              min: 100,
-              max: 1000,
-              from: 550
-          });
-
-          $('#rangeslider3').ionRangeSlider({
-              type: 'double',
-              grid: true,
-              min: 0,
-              max: 1000,
-              from: 200,
-              to: 800,
-              prefix: '$'
-          });
-
-          $('#rangeslider4').ionRangeSlider({
-              type: 'double',
-              grid: true,
-              min: -1000,
-              max: 1000,
-              from: -500,
-              to: 500,
-              step: 250
-          });
-        }
-      });
-      </script>
-  </body>
+    </script>
+</body>
 </html>
