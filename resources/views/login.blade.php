@@ -30,7 +30,7 @@
 
             <div class="form-group">
             <input type="password" class="form-control" placeholder="Enter your password" required>
-            <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
+            <a href="\forgot-password" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
             </div><!-- form-group -->
 
             <button type="submit" class="btn btn-info btn-block">Sign In</button>

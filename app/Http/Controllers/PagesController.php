@@ -45,7 +45,7 @@ class PagesController extends Controller
     public function edit_test() {
         return view('edit-test');
     }
-    
+
     public function edit_course() {
         return view('edit-course');
     }
@@ -60,5 +60,9 @@ class PagesController extends Controller
 
     public function modal_template() {
         return view('modal-template');
+    }
+
+    public function forgot_password() {
+        return view('forgot-password');
     }
 }
