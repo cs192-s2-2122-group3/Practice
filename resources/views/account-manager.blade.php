@@ -13,6 +13,7 @@
     <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
+    <link href="../lib/highlightjs/github.css" rel="stylesheet">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../css/bracket.css">
@@ -95,7 +96,7 @@
             </div><!-- btn-group -->
 
             <div class="mg-l-auto hidden-xs-down">
-                <a href="/account-manager/create" class="btn btn-info">New Account</a>
+                <a href="/user/create" class="btn btn-info">New Account</a>
                 <a href="#" class="btn btn-outline-info mg-l-5">Delete</a>
             </div>
 
@@ -150,9 +151,9 @@
                                         <!-- EMAIL -->
                                         <a href="" class="nav-link">Email</a>
                                         <!-- EDIT -->
-                                        <a href="/account-manager/{{ $user->id }}/edit" class="nav-link">Edit</a>
+                                        <a href="/user/{{ $user->id }}/edit" class="nav-link">Edit</a>
                                         <!-- DELETE -->
-                                        <form action="account-manager/{{ $user->id }}" method='POST'> @csrf @method('delete')
+                                        <form action="user/{{ $user->id }}" method='POST'> @csrf @method('delete')
                                             <button type="submit" class="nav-link btn-link btn-block text-left">Delete</button>
                                         </form>
                                     </nav>
@@ -164,8 +165,10 @@
 
                     </tbody>
                 </table>
+                {{ $users->links('layouts.pagination') }}
             </div>
         </div><!-- br-pagebody -->
+        
         <footer class="br-footer">
             <div class="footer-left">
                 <div class="mg-b-2">Filter Info:</div>
@@ -186,6 +189,7 @@
     <script src="../lib/jquery-ui/jquery-ui.js"></script>
     <script src="../lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="../lib/peity/jquery.peity.js"></script>
+    <script src="../lib/highlightjs/highlight.pack.js"></script>
 
     <script src="../js/bracket.js"></script>
     <script>

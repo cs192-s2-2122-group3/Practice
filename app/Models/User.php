@@ -64,4 +64,9 @@ class User extends Authenticatable
     protected $dates = [
         'birth_date',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 }

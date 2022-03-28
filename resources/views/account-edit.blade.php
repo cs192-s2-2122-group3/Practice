@@ -61,7 +61,7 @@
                 <p class="mg-b-30 tx-gray-600">Input the required values in the following fields</p>
 
                 <div class="form-layout form-layout-2 mg-b-20">
-                    <form action="/account-manager/{{ $user->id }}" method="post" data-parsley-validate>
+                    <form action="/user/{{ $user->id }}" method="post" data-parsley-validate>
                         @csrf
                         @method('put')
 
@@ -154,7 +154,7 @@
                         <div class="form-layout-footer bd pd-20 bd-t-0">
                             <div class="d-flex justify-content-end ">
                                 <button type="submit" class="btn btn-info mg-r-5">Edit User</button>
-                                <a href="/account-manager" class="btn btn-secondary" role="button">Cancel</a>
+                                <a href="/user" class="btn btn-secondary" role="button">Cancel</a>
                             </div><!-- btn-group -->
                         </div><!-- form-group -->
 

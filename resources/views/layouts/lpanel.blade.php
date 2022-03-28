@@ -23,13 +23,13 @@
             <li class="nav-item"><a href="\welcome" class="nav-link">Welcome</a></li>
             <li class="nav-item"><a href="\login" class="nav-link">Login</a></li>
             <li class="nav-item"><a href="\signup" class="nav-link">Signup</a></li>
-            <li class="nav-item"><a href="\account-manager" class="nav-link">Account Management</a></li>
-            <li class="nav-item"><a href="\course-manager" class="nav-link">Course Management</a></li>
+            <li class="nav-item"><a href="\user" class="nav-link">Account Management</a></li>
+            <li class="nav-item"><a href="\course" class="nav-link">Course Management</a></li>
             <li class="nav-item"><a href="\test-manager" class="nav-link">Test Management</a></li>
             <li class="nav-item"><a href="\take-test" class="nav-link">Test Taking</a></li>
             <li class="nav-item"><a href="\edit-test" class="nav-link">Test Editing</a></li>
             <li class="nav-item"><a href="\test-results" class="nav-link">Test Results</a></li>
-            <li class="nav-item"><a href="\edit-course" class="nav-link">Course Editing</a></li>
+            <li class="nav-item"><a href="\course-edit" class="nav-link">Course Editing</a></li>
             <li class="nav-item"><a href="\account-page" class="nav-link">Account Page</a></li>
             <li class="nav-item"><a href="\account-manager\create" class="nav-link">Create Account</a></li>
             <li class="nav-item"><a href="\modal-template" class="nav-link">Modal Template</a></li>

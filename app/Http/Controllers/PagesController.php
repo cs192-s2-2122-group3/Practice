@@ -47,7 +47,7 @@ class PagesController extends Controller
     }
 
     public function edit_course() {
-        return view('edit-course');
+        return view('course-edit');
     }
 
     public function test_results() {

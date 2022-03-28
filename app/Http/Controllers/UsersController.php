@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\User;
@@ -21,7 +21,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
 
         // dd($users);
         return view('account-manager', [
@@ -75,7 +75,7 @@ class UsersController extends Controller
             'remember_token' => Str::random(10),
         ]);
 
-        return redirect('/account-manager');
+        return redirect('/user');
     }
 
     /**
@@ -135,7 +135,7 @@ class UsersController extends Controller
             $user->update([ 'password' => Hash::make($request->input('password')) ]);
         }
 
-        return redirect('/account-manager');
+        return redirect('/user');
     }
 
     /**
@@ -149,7 +149,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
         
-        return redirect('/account-manager');
+        return redirect('/user');
     }
 
     /**
@@ -161,6 +161,6 @@ class UsersController extends Controller
     public function destroyMany(array $ids)
     {
         $user = User::whereIn('id', $ids)->delete;
-        return redirect('/account-manager');
+        return redirect('/user');
     }
 }
