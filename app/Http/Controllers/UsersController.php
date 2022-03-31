@@ -61,18 +61,18 @@ class UsersController extends Controller
         //$users = User::factory()->count(3)->create();
         $user = User::create([
             // names
-            'first_name' => $request->input('first_name'),
-            'middle_name' => $request->input('middle_name'),
-            'last_name' => $request->input('last_name'),
-            'user_name' => $request->input('user_name'),
+            'first_name'        => $request->input('first_name'),
+            'middle_name'       => $request->input('middle_name'),
+            'last_name'         => $request->input('last_name'),
+            'user_name'         => $request->input('user_name'),
             // additional info
-            'birth_date' => $request->date('birth_date'),
-            'role' => $request->input('role'),
+            'birth_date'        => $request->date('birth_date'),
+            'role'              => $request->input('role'),
             // account details
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'description' => $request->input('description'),
-            'remember_token' => Str::random(10),
+            'email'             => $request->input('email'),
+            'password'          => Hash::make($request->input('password')),
+            'description'       => $request->input('description'),
+            'remember_token'    => Str::random(10),
         ]);
 
         return redirect('/user');

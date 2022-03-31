@@ -154,51 +154,41 @@
                     </thead>
 
                     <tbody>
-                        <!-- SAMPLE CONTENT -->
-                        <tr>
-                            <td class="valign-middle">
-                                <label class="ckbox mg-b-0">
-                                    <input type="checkbox"><span></span>
-                                </label>
-                            </td>
-                            <td class="hidden-xs-down">1</td>
-                            <td>
-                                <i class="icon ion-ios-folder-outline tx-24 tx-warning lh-0 valign-middle"></i>
-                                <span class="pd-l-5">CS 145</span>
-                            </td>
-                            <td class="hidden-xs-down">11/24/2022 6:00am</td>
-                            <td class="hidden-xs-down">Rey Christian Delos Reyes</td>
-                            <td class="hidden-xs-down">169</td>
-                            <td class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info"><i
-                                        class="icon ion-more"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right pd-10">
-                                    <nav class="nav nav-style-1 flex-column">
-                                        <a href="" class="nav-link">Info</a>
-                                        <a href="" class="nav-link">Tests</a>
-                                        <a href="" class="nav-link">Edit</a>
-                                        <a href="" class="nav-link">Delete</a>
-                                    </nav>
-                                </div><!-- dropdown-menu -->
-                            </td>
-                        </tr>
-
                         @foreach ($courses as $course)
                         <tr>
+                            <!-- CHECK BOX -->
                             <td class="valign-middle">
                                 <label class="ckbox mg-b-0">
                                     <input type="checkbox"><span></span>
                                 </label>
                             </td>
+
+                            <!-- COURSE ID -->
                             <td class="hidden-xs-down">{{ $course->id }}</td>
+
+                            <!-- COURSE TITLE -->
                             <td>
                                 <i class="icon ion-ios-folder-outline tx-24 tx-warning lh-0 valign-middle"></i>
                                 <!--<i class="fa fa-book tx-22 tx-danger lh-0 valign-middle"></i>-->
                                 <span class="pd-l-5">{{ $course->title }}</span>
                             </td>
+
+                            <!-- COURSE - CREATED AT -->
                             <td class="hidden-xs-down">{{ $course->created_at->format('d/m/Y - h:m') }}</td>
-                            <td class="hidden-xs-down">atleast 2 handlers</td>
-                            <td class="hidden-xs-down">(count of students)</td>
+
+                            <!-- COURSE HANDLER -->
+                            <td class="hidden-xs-down">
+                                @if($course->handlers->first())
+                                    {{ $course->handlers->first()->first_name.' '.$course->handlers->first()->last_name }}
+                                @endif
+                            </td>
+
+                            <!-- COURSE STUDENT COUNT -->
+                            <td class="hidden-xs-down">
+                            {{ $course->students->count() }}
+                            </td>
+
+                            <!-- DROPDOWN MENU OPTIONS -->
                             <td class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info"><i
                                         class="icon ion-more"></i></a>
@@ -206,7 +196,7 @@
                                     <nav class="nav nav-style-1 flex-column">
                                         <a href="" class="nav-link">Info</a>
                                         <a href="" class="nav-link">Rename</a>
-                                        <a href="" class="nav-link">Edit</a>
+                                        <a href="/course/{{ $course->id }}/edit" class="nav-link">Edit</a>
                                         <form action="course/{{ $course->id }}" method='POST'> @csrf @method('delete')
                                             <button type="submit" class="nav-link btn-link btn-block text-left">
                                                 Delete
@@ -220,6 +210,7 @@
 
                     </tbody>
                 </table>
+                {{ $courses->links('layouts.pagination') }}
             </div>
         </div><!-- br-pagebody -->
         <footer class="br-footer">

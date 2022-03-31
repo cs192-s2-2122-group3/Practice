@@ -14,6 +14,15 @@ class CoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Course::factory(10)->create();
+        \App\Models\Course::factory(50)->create();
+
+        foreach(\App\Models\Course::all() as $course) {
+            $users = \App\Models\User::inRandomOrder()->take(rand(5,10))->get();
+
+            foreach($users as $user) {
+                $course->users()->attach($user->id,['is_handler' => ($user->role === 'faculty' || $user->role === 'admin')]);
+            }
+        }
+        
     }
 }

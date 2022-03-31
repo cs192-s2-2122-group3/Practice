@@ -22,12 +22,19 @@ Route::get('/', function () {
 });
 */
 
-// Admin account management
-Route::resource('/user', UsersController::class);
-Route::resource('/course', CoursesController::class);
-
 // Authentication: Login and Register
 Auth::routes();
+
+// Admin Account Management
+Route::resource('/user', UsersController::class);
+
+// Courses management
+Route::get('/course/create/add/{id}', [CoursesController::class, 'create_add_user']);
+Route::get('/course/create/remove/{id}', [CoursesController::class, 'create_remove_user']);
+Route::get('/course/{course_id}/edit/add/{id}', [CoursesController::class, 'edit_add_user']);
+Route::get('/course/{course_id}/edit/remove/{id}', [CoursesController::class, 'edit_remove_user']);
+Route::resource('/course', CoursesController::class);
+
 
 // Home Page
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

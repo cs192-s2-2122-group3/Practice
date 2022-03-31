@@ -22,12 +22,27 @@ class Course extends Model
         'created_at' => 'datetime:m/d/Y h:i'
     ];
 
-    protected $dates = [
-        'birth_date',
-    ];
-
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_course', 'course_id', 'user_id',)
+            ->withTimestamps()
+            ->withPivot(['is_handler'])
+            ->as('user_course');
+    }
+
+    public function handlers()
+    {
+        return $this->belongsToMany(User::class, 'user_course', 'course_id', 'user_id',)
+            ->withTimestamps()
+            ->withPivot(['is_handler'])
+            ->wherePivot('is_handler', 1);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'user_course', 'course_id', 'user_id',)
+            ->withTimestamps()
+            ->withPivot(['is_handler'])
+            ->wherePivot('is_handler', 0);
     }
 }

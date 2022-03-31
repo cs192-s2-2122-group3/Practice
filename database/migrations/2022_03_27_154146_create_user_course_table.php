@@ -24,6 +24,8 @@ return new class extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
+            $table  ->boolean('is_handler')->default(false);
+            $table  ->timestamps();
         });
     }
 
