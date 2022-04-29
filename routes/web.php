@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\TestsController;
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\AnswersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +31,27 @@ Auth::routes();
 // Admin Account Management
 Route::resource('/user', UsersController::class);
 
-// Courses management
+// Courses Management
 Route::get('/course/create/add/{id}', [CoursesController::class, 'create_add_user']);
 Route::get('/course/create/remove/{id}', [CoursesController::class, 'create_remove_user']);
 Route::get('/course/{course_id}/edit/add/{id}', [CoursesController::class, 'edit_add_user']);
 Route::get('/course/{course_id}/edit/remove/{id}', [CoursesController::class, 'edit_remove_user']);
 Route::resource('/course', CoursesController::class);
+
+// Test Management
+Route::resource('/test', TestsController::class);
+
+Route::get('/test/{id}/items', [ItemsController::class,'index']);
+Route::post('/test/{id}/items', [ItemsController::class,'add_item']);
+Route::delete('/test/{id}/items', [ItemsController::class,'remove_item']);
+Route::get('/test/{id}/items/fetch', [ItemsController::class,'fetch']);
+Route::put('/test/{test_id}/items/{id}/save', [ItemsController::class,'save']);
+
+Route::post('/test/{test_id}/items/{id}/answer/', [AnswersController::class,'add_answer']);
+Route::delete('/test/{test_id}/items/{id}/answer/', [AnswersController::class,'remove_answer']);
+Route::get('/test/{test_id}/items/{id}/answer/fetch', [AnswersController::class,'fetch']);
+
+
 
 
 // Home Page

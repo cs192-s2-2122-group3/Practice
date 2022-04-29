@@ -3,7 +3,7 @@
         @if ($paginator->onFirstPage())
             <ul class="pagination pagination-basic mg-b-0">
                 <li class="page-item disabled">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" aria-label="Next">
+                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" aria-label="Next" id="page-link">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 </li>
@@ -11,7 +11,7 @@
         @else
             <ul class="pagination pagination-basic mg-b-0">
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" aria-label="Next">
+                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" aria-label="Next" id="page-link">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 </li>
@@ -27,9 +27,9 @@
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
-                            <li class="page-item mg-r-7 mg-l-7 active"><a class="page-link" href="#">{{ $page }}</a></li>
+                            <li class="page-item mg-r-7 mg-l-7 active"><a class="page-link" href="#" id="page-link">{{ $page }}</a></li>
                         @else
-                            <li class="page-item mg-r-7 mg-l-7"><a class="page-link hidden-xs-down" href="{{ $url }}">{{ $page }}</a></li>
+                            <li class="page-item mg-r-7 mg-l-7"><a class="page-link hidden-xs-down" href="{{ $url }}" id="page-link">{{ $page }}</a></li>
                         @endif
                     @endforeach
                 @endif
@@ -39,7 +39,7 @@
         @if ($paginator->hasMorePages())
             <ul class="pagination pagination-basic mg-b-0">
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" aria-label="Next">
+                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" aria-label="Next" id="page-link">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
         @else
             <ul class="pagination pagination-basic mg-b-0">
                 <li class="page-item disabled">
-                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" aria-label="Next">
+                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" aria-label="Next" id="page-link">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </li>

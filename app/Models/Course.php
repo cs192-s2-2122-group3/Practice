@@ -45,4 +45,9 @@ class Course extends Model
             ->withPivot(['is_handler'])
             ->wherePivot('is_handler', 0);
     }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }

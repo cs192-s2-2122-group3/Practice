@@ -1,43 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@push('styles')
+    <link href="{{ URL::asset('/lib/highlightjs/github.css'); }}" rel="stylesheet">
+    <link href="{{ URL::asset('/lib/select2/css/select2.min.css'); }}" rel="stylesheet">
+    <link href="{{ URL::asset('/lib/jt.timepicker/jquery.timepicker.css'); }}" rel="stylesheet">
+@endpush
 
-    <title>Practice - Create Accounts</title>
+@push('scripts')
+    <script src="{{ URL::asset('/lib/highlightjs/highlight.pack.js'); }}"></script>
+    <script src="{{ URL::asset('/lib/select2/js/select2.min.js'); }}"></script>
+@endpush
 
-    <!-- vendor css -->
-    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
-    <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link href="../lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
-    <link href="../lib/highlightjs/github.css" rel="stylesheet">
-    <link href="../lib/select2/css/select2.min.css" rel="stylesheet">
-    <link href="../lib/jt.timepicker/jquery.timepicker.css" rel="stylesheet">
+@section('content')
 
-    <!-- Bracket CSS -->
-    <link rel="stylesheet" href="../css/bracket.css">
-</head>
-
-<body>
-
-    <!-- ========== START: LEFT PANEL ============ -->
-    @include('layouts.lpanel')
-    <!-- ============ END: LEFT PANEL ============ -->
-
-
-    <!-- =========== START: HEAD PANEL =========== -->
-    @include('layouts.hpanel')
-    <!-- ============ END: HEAD PANEL ============ -->
-
-
-    <!-- ========== START: RIGHT PANEL =========== -->
-    @include('layouts.rpanel')
-    <!-- =========== END: RIGHT PANEL ============ -->
-
-    <!-- ========== START: MAIN PANEL ============ -->
     <div class="br-mainpanel">
 
         <div class="br-pageheader pd-y-15 pd-md-l-20">
@@ -181,21 +156,11 @@
                 <div class="mg-b-2">Create Account:</div>
             </div>
         </footer>
+
     </div><!-- br-mainpanel -->
-    <!-- ============ END: MAIN PANEL ============ -->
+@endsection
 
-    <script src="../lib/jquery/jquery.js"></script>
-    <script src="../lib/popper.js/popper.js"></script>
-    <script src="../lib/bootstrap/bootstrap.js"></script>
-    <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="../lib/moment/moment.js"></script>
-    <script src="../lib/jquery-ui/jquery-ui.js"></script>
-    <script src="../lib/jquery-switchbutton/jquery.switchButton.js"></script>
-    <script src="../lib/peity/jquery.peity.js"></script>
-    <script src="../lib/highlightjs/highlight.pack.js"></script>
-    <script src="../lib/select2/js/select2.min.js"></script>
-
-    <script src="../js/bracket.js"></script>
+@push('custom_scripts')
     <script>
         $(function () {
             'use strict'
@@ -243,10 +208,6 @@
             $('#setTimeButton').on('click', function () {
                 $('#tp3').timepicker('setTime', new Date());
             });
-
         });
-
     </script>
-</body>
-
-</html>
+@endpush

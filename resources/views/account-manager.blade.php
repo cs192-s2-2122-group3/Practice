@@ -1,41 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@push('styles')
+    <link href="{{ URL::asset('/lib/highlightjs/github.css'); }}" rel="stylesheet">
+@endpush
 
-    <title>Practice - Manage Accounts</title>
+@push('scripts')
+    <script src="{{ URL::asset('/lib/highlightjs/highlight.pack.js'); }}"></script>
+@endpush
 
-    <!-- vendor css -->
-    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
-    <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link href="../lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
-    <link href="../lib/highlightjs/github.css" rel="stylesheet">
-
-    <!-- Bracket CSS -->
-    <link rel="stylesheet" href="../css/bracket.css">
-</head>
-
+@section('content')
 <body class="collapsed-menu with-subleft">
-
-    <!-- ========== START: LEFT PANEL ============ -->
-    @include('layouts.lpanel')
-    <!-- ============ END: LEFT PANEL ============ -->
-
-
-    <!-- =========== START: HEAD PANEL =========== -->
-    @include('layouts.hpanel')
-    <!-- ============ END: HEAD PANEL ============ -->
-
-
-    <!-- ========== START: RIGHT PANEL =========== -->
-    @include('layouts.rpanel')
-    <!-- =========== END: RIGHT PANEL ============ -->
-
-    <!-- ========== START: MAIN PANEL ============ -->
     <div class="br-subleft">
         <h6 class="tx-uppercase tx-10 tx-mont tx-spacing-1 mg-t-10 pd-x-10 tx-white-7">Filter Users</h6>
 
@@ -176,22 +150,9 @@
             </div>
         </footer>
     </div><!-- br-contentpanel -->
+@endsection
 
-
-
-    <!-- ============ END: MAIN PANEL ============ -->
-
-    <script src="../lib/jquery/jquery.js"></script>
-    <script src="../lib/popper.js/popper.js"></script>
-    <script src="../lib/bootstrap/bootstrap.js"></script>
-    <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="../lib/moment/moment.js"></script>
-    <script src="../lib/jquery-ui/jquery-ui.js"></script>
-    <script src="../lib/jquery-switchbutton/jquery.switchButton.js"></script>
-    <script src="../lib/peity/jquery.peity.js"></script>
-    <script src="../lib/highlightjs/highlight.pack.js"></script>
-
-    <script src="../js/bracket.js"></script>
+@push('custom_scripts')
     <script>
         $(function () {
             'use strict';
@@ -236,8 +197,5 @@
             });
 
         });
-
     </script>
-</body>
-
-</html>
+@endpush

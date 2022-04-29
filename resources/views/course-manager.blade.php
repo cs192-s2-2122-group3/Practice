@@ -197,7 +197,7 @@
                                         <a href="" class="nav-link">Info</a>
                                         <a href="" class="nav-link">Rename</a>
                                         <a href="/course/{{ $course->id }}/edit" class="nav-link">Edit</a>
-                                        <form action="course/{{ $course->id }}" method='POST'> @csrf @method('delete')
+                                        <form action="/course/{{ $course->id }}" method='POST'> @csrf @method('delete')
                                             <button type="submit" class="nav-link btn-link btn-block text-left">
                                                 Delete
                                             </button>

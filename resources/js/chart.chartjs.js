@@ -2,7 +2,7 @@ $(function(){
   'use strict';
 
   var ctx1 = document.getElementById('chartBar1').getContext('2d');
-  var myChart1 = new Chart(ctx1, {
+  new Chart(ctx1, {
     type: 'bar',
     data: {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],

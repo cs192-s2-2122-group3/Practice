@@ -1,5 +1,5 @@
 /*!
- * Bracket Plus v1.0.0 (https://themetrace.com/bracketplus)
+ * Bracket Plus v1.1.0 (https://themetrace.com/bracketplus)
  * Copyright 2017-2018 ThemePixels
  * Licensed under ThemeForest License
  */
@@ -8,15 +8,9 @@
 
  $(document).ready(function(){
 
-  // This will auto show sub menu using the slideDown()
-  // when top level menu have a class of .show-sub
-  $('.show-sub + .br-menu-sub').slideDown();
-
-
-
   // This will collapsed sidebar menu on left into a mini icon menu
   $('#btnLeftMenu').on('click', function(){
-    var menuText = $('.menu-item-label,.menu-item-arrow');
+    var menuText = $('.menu-item-label');
 
     if($('body').hasClass('collapsed-menu')) {
       $('body').removeClass('collapsed-menu');
@@ -59,7 +53,7 @@
         // show current shown sub menu that was hidden from collapsed
         $('.show-sub + .br-menu-sub').slideDown();
 
-        var menuText = $('.menu-item-label,.menu-item-arrow');
+        var menuText = $('.menu-item-label');
         menuText.removeClass('d-lg-none');
         menuText.removeClass('op-lg-0-force');
 
@@ -69,7 +63,7 @@
         // hide current shown menu
         $('.show-sub + .br-menu-sub').slideUp();
 
-        var menuText = $('.menu-item-label,.menu-item-arrow');
+        var menuText = $('.menu-item-label');
         menuText.addClass('op-lg-0-force');
         menuText.addClass('d-lg-none');
       }
@@ -80,7 +74,7 @@
 
   // This will show sub navigation menu on left sidebar
   // only when that top level menu have a sub menu on it.
-  $('.br-menu-link').on('click', function(){
+  $('.br-sideleft').on('click', '.br-menu-link', function(){
     var nextElem = $(this).next();
     var thisLink = $(this);
 
@@ -128,7 +122,7 @@
 
 
   // This will hide sidebar when it's clicked outside of it
-  $(document).on('click', function(e){
+  $(document).on('click touchstart', function(e){
     e.stopPropagation();
 
     // closing left sidebar
@@ -167,16 +161,34 @@
     });
   }
 
-
-
   // custom scrollbar style
-  $('.overflow-y-auto').perfectScrollbar();
+  new PerfectScrollbar('.sideleft-scrollbar', {
+    suppressScrollX: true
+  });
+
+  new PerfectScrollbar('.contact-scrollbar', {
+    suppressScrollX: true
+  });
+
+  new PerfectScrollbar('.attachment-scrollbar', {
+    suppressScrollX: true
+  });
+
+  new PerfectScrollbar('.schedule-scrollbar', {
+    suppressScrollX: true
+  });
+
+  new PerfectScrollbar('.settings-scrollbar', {
+    suppressScrollX: true
+  });
 
   // jquery ui datepicker
   $('.datepicker').datepicker();
 
   // switch button
-  $('.switch-button').switchButton();
+  $('.br-switchbutton').on('click', function(){
+    $(this).toggleClass('checked');
+  });
 
   // peity charts
   $('.peity-bar').peity('bar');
@@ -214,7 +226,8 @@
   // Select2 without the search
   if($().select2) {
     $('.select2').select2({
-      minimumResultsForSearch: Infinity
+      minimumResultsForSearch: Infinity,
+      placeholder: 'Choose one'
     });
 
     // Select2 by showing the search

@@ -3,23 +3,28 @@
 @section('content')
 
 <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
-    <div id="reset-link" class="modal d-block pos-static">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body tx-center pd-y-20 pd-x-20">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <i class="icon ion-ios-checkmark-outline tx-100 tx-success lh-1 mg-t-20 d-inline-block"></i>
-                    <h4 class="tx-success mg-b-20">Reset password link sent!</h4>
-                    <p class="mg-b-20 mg-x-20">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-                    <button type="button" class="btn btn-success tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium mg-b-20">
-                        Continue</button>
-                </div><!-- modal-body -->
-            </div><!-- modal-content -->
-        </div><!-- modal-dialog -->
-    </div><!-- modal -->
-</div><!-- pd-y-50 -->
+
+    <div class="login-wrapper wd-300 wd-xs-600 pd-25 pd-xs-40 bg-white rounded shadow-base">
+        <div class="tx-left mg-b-10">Reset Password:</div>
+
+        <form action="{{ route('password.email') }}" method="post" data-parsley-validate>
+            @csrf
+
+            <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control "
+                        placeholder="Enter email" value="{{ old('email') }}" required autocomplete="email">
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div><!-- form-group -->
+
+            <button type="submit" class="btn btn-info btn-block">Send Password Reset Link</button>
+        </form> <!-- form-validation -->
+        <!--<div class="mg-t-40 tx-center">Not yet a member? <a href="" class="tx-info">Sign Up</a></div>-->
+    </div><!-- login-wrapper -->
+</div><!-- d-flex -->
 
 <!--
 <div class="container">

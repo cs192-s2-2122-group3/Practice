@@ -1,4 +1,3 @@
-
 <!-- TABS -->
 <div class="br-sideright">
 <ul class="nav nav-tabs sidebar-tabs" role="tablist">

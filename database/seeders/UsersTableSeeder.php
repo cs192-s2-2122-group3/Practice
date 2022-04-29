@@ -45,6 +45,51 @@ class UsersTableSeeder extends Seeder
             'description'       => 'wuv u',
         ]);
 
+        \App\Models\User::create([
+            // names
+            'first_name'        => 'Admin',
+            'middle_name'       => 'New',
+            'last_name'         => 'Sample',
+            'user_name'         => 'admin1',
+            // additional info
+            'birth_date'        => now(),
+            'role'              => 'admin',
+            // account details
+            'email'             => 'admin@up.edu.ph',
+            'password'          => Hash::make('password'),
+            'description'       => 'I am an admin',
+        ]);
+
+        \App\Models\User::create([
+            // names
+            'first_name'        => 'Faculty',
+            'middle_name'       => 'New',
+            'last_name'         => 'Sample',
+            'user_name'         => 'faculty1',
+            // additional info
+            'birth_date'        => now(),
+            'role'              => 'faculty',
+            // account details
+            'email'             => 'faculty@up.edu.ph',
+            'password'          => Hash::make('password'),
+            'description'       => 'I am a faculty member',
+        ]);
+
+        \App\Models\User::create([
+            // names
+            'first_name'        => 'Student',
+            'middle_name'       => 'New',
+            'last_name'         => 'Sample',
+            'user_name'         => 'student1',
+            // additional info
+            'birth_date'        => now(),
+            'role'              => 'student',
+            // account details
+            'email'             => 'student@up.edu.ph',
+            'password'          => Hash::make('password'),
+            'description'       => 'I am a student',
+        ]);
+
         \App\Models\User::factory(100)->create();
     }
 }

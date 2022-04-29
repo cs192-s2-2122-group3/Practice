@@ -120,7 +120,7 @@
                     <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14">Question 4 - Essay</h6>
                     <p class="mg-b-30 tx-gray-600">Question Details: Essay Type</p>
     
-                    <div id="summernote">Hello, World!</div>
+                    <textarea id="summernote" name="">Hello, World!</textarea>
     
                 </div><!-- form-layout -->
                 

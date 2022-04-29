@@ -15,6 +15,8 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'users';
+    
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -79,5 +81,18 @@ class User extends Authenticatable
             ->withTimestamps()
             ->withPivot(['is_handler'])
             ->wherePivot('is_handler', 1);
+    }
+
+    public function enrolled()
+    {
+        return $this->belongsToMany(Course::class, 'user_course', 'user_id', 'course_id')
+            ->withTimestamps()
+            ->withPivot(['is_handler'])
+            ->wherePivot('is_handler', 0);
+    }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
     }
 }

@@ -41,7 +41,7 @@
 
                     <div class="col-sm-4">
                         <input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror"
-                                placeholder="firstname" value="{{ old('first_name') }}" required>
+                                placeholder="first name" value="{{ old('first_name') }}" required>
                         @error('first_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
 
                     <div class="col-sm-4">
                         <input type="text" name="middle_name" id="middle_name" class="form-control @error('middle_name') is-invalid @enderror"
-                                placeholder="middlename" value="{{ old('middle_name') }}" required>
+                                placeholder="middle name" value="{{ old('middle_name') }}" required>
                         @error('middle_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@
 
                     <div class="col-sm-4">
                         <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror"
-                                placeholder="lastname" value="{{ old('last_name') }}" required>
+                                placeholder="last name" value="{{ old('last_name') }}" required>
                         @error('last_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

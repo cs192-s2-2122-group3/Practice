@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Practice - Edit Accounts</title>
-    <!-- {{ URL::asset(''); }} -->
-    <!-- vendor css -->
-    <link href="{{ URL::asset('/lib/font-awesome/css/font-awesome.css'); }}" rel="stylesheet">
-    <link href="{{ URL::asset('/lib/Ionicons/css/ionicons.css'); }}" rel="stylesheet">
-    <link href="{{ URL::asset('/lib/perfect-scrollbar/css/perfect-scrollbar.css'); }}" rel="stylesheet">
-    <link href="{{ URL::asset('/lib/jquery-switchbutton/jquery.switchButton.css'); }}" rel="stylesheet">
+@push('styles')
     <link href="{{ URL::asset('/lib/highlightjs/github.css'); }}" rel="stylesheet">
     <link href="{{ URL::asset('/lib/select2/css/select2.min.css'); }}" rel="stylesheet">
     <link href="{{ URL::asset('/lib/jt.timepicker/jquery.timepicker.css'); }}" rel="stylesheet">
+@endpush
 
-    <!-- Bracket CSS -->
-    <link rel="stylesheet" href="{{ URL::asset('/css/bracket.css'); }}">
-</head>
+@push('scripts')
+    <script src="{{ URL::asset('/lib/highlightjs/highlight.pack.js'); }}"></script>
+    <script src="{{ URL::asset('/lib/select2/js/select2.min.js'); }}"></script>
+@endpush
 
-<body>
-
-    <!-- ========== START: LEFT PANEL ============ -->
-    @include('layouts.lpanel')
-    <!-- ============ END: LEFT PANEL ============ -->
-
-
-    <!-- =========== START: HEAD PANEL =========== -->
-    @include('layouts.hpanel')
-    <!-- ============ END: HEAD PANEL ============ -->
-
-
-    <!-- ========== START: RIGHT PANEL =========== -->
-    @include('layouts.rpanel')
-    <!-- =========== END: RIGHT PANEL ============ -->
-
-    <!-- ========== START: MAIN PANEL ============ -->
+@section('content')
     <div class="br-mainpanel">
 
         <div class="br-pageheader pd-y-15 pd-md-l-20">
@@ -181,21 +155,9 @@
             </div>
         </footer>
     </div><!-- br-mainpanel -->
-    <!-- ============ END: MAIN PANEL ============ -->
-    
-    <script src="{{ URL::asset('/lib/jquery/jquery.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/popper.js/popper.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/bootstrap/bootstrap.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/moment/moment.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/jquery-ui/jquery-ui.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/jquery-switchbutton/jquery.switchButton.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/peity/jquery.peity.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/highlightjs/highlight.pack.js'); }}"></script>
-    <script src="{{ URL::asset('/lib/select2/js/select2.min.js'); }}"></script>
+@endsection
 
-    <script src="{{ URL::asset('/js/bracket.js'); }}"></script>
-
+@push('custom_scripts')
     <script>
         $(function () {
             'use strict'
@@ -226,7 +188,7 @@
                 showOtherMonths: true,
                 selectOtherMonths: true
             });
-
+            
             $('#datepickerNoOfMonths').datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
@@ -245,8 +207,5 @@
             });
 
         });
-
     </script>
-</body>
-
-</html>
+@endpush
