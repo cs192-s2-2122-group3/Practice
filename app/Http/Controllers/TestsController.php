@@ -138,4 +138,22 @@ class TestsController extends Controller
         
         return redirect()->back();
     }
+
+    public function archive()
+    {
+        $tests = Test::paginate(10);
+        
+        return view('test-archive', [
+            'tests' => $tests,
+        ]);
+    }
+
+    public function take($id)
+    {
+        $test = Test::find($id);
+        
+        return view('test-take', [
+            'test' => $test,
+        ]);
+    }
 }

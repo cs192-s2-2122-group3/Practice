@@ -48,7 +48,7 @@ class ItemsController extends Controller
         if($item) {
             $item->delete();
             $test->update([
-                'count' => $test->count = 1,
+                'count' => $test->count - 1,
             ]);
         }
 
@@ -95,6 +95,14 @@ class ItemsController extends Controller
             } 
             
             else if ($item->type == 1) {
+
+                if(!$request->input('checkbox')) {
+                    $answer->update([
+                        'description'   => $request->input('description')[$iterator],
+                        'type'          => 0,
+                    ]); $iterator++; continue;
+                }
+
                 $answer->update([
                     'description'   => $request->input('description')[$iterator],
                     'type'          => in_array((string)$answer->id, $request->input('checkbox')) ? 1 : 0,
@@ -108,7 +116,13 @@ class ItemsController extends Controller
                 ]); $iterator++;
             }
         }
+        /*
+        $test = Test::find($test_id);
 
+        $test->update([
+            'count' => $test->count,
+        ]);
+        */
         return redirect()->back();
     }
 }

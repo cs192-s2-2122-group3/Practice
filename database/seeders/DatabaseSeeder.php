@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             CoursesTableSeeder::class,
             TestsTableSeeder::class,
+            ItemsTableSeeder::class,
+            AnswersTableSeeder::class,
         ]);
     }
 }
