@@ -116,13 +116,7 @@ class ItemsController extends Controller
                 ]); $iterator++;
             }
         }
-        /*
-        $test = Test::find($test_id);
-
-        $test->update([
-            'count' => $test->count,
-        ]);
-        */
+        
         return redirect()->back();
     }
 }
