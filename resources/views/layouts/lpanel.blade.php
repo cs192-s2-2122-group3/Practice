@@ -1,6 +1,7 @@
 <div class="br-logo"><a href=""><span>[</span>Practice<span>]</span></a></div>
 <div class="br-sideleft overflow-y-auto">
     <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
+    
     <div class="br-sideleft-menu">
 
         <!-- DASHBOARD -->
@@ -11,31 +12,127 @@
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
 
-        <!-- MULTILINK -->
-        <a href="\" class="br-menu-link">
-            <div class="br-menu-item">
-                <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
-                <span class="menu-item-label">Pages</span>
-                <i class="menu-item-arrow fa fa-angle-down"></i>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-        <ul class="br-menu-sub nav flex-column">
-            <li class="nav-item"><a href="\welcome" class="nav-link">Welcome</a></li>
-            <li class="nav-item"><a href="\login" class="nav-link">Login</a></li>
-            <li class="nav-item"><a href="\signup" class="nav-link">Signup</a></li>
-            <li class="nav-item"><a href="\user" class="nav-link">Account Management</a></li>
-            <li class="nav-item"><a href="\course" class="nav-link">Course Management</a></li>
-            <li class="nav-item"><a href="\test" class="nav-link">Test Management</a></li>
-            <li class="nav-item"><a href="\test\archive" class="nav-link">Test Archive</a></li>
-            <li class="nav-item"><a href="\attempt" class="nav-link">Attempts</a></li>
-            <li class="nav-item"><a href="\take-test" class="nav-link">Test Taking</a></li>
-            <li class="nav-item"><a href="\edit-test" class="nav-link">Test Editing</a></li>
-            <li class="nav-item"><a href="\test-results" class="nav-link">Test Results</a></li>
-            <li class="nav-item"><a href="\course-edit" class="nav-link">Course Editing</a></li>
-            <li class="nav-item"><a href="\account-page" class="nav-link">Account Page</a></li>
-            <li class="nav-item"><a href="\account-manager\create" class="nav-link">Create Account</a></li>
-            <li class="nav-item"><a href="\modal-template" class="nav-link">Modal Template</a></li>
-        </ul>
+        @if(auth()->user()->hasRole('admin'))
+			<!-- COURSE -->
+			<a href="\" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon ion-ios-albums-outline tx-24"></i>
+					<span class="menu-item-label">Courses</span>
+					<i class="menu-item-arrow fa fa-angle-down"></i>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+			<ul class="br-menu-sub nav flex-column">
+				<li class="nav-item"><a href="\course" class="nav-link">Manager</a></li>
+				<li class="nav-item"><a href="\course\create" class="nav-link">Create Course</a></li>
+			</ul>
+
+			<!-- TEST -->
+			<a href="\" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon ion-ios-paper-outline tx-24"></i>
+					<span class="menu-item-label">Tests</span>
+					<i class="menu-item-arrow fa fa-angle-down"></i>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+			<ul class="br-menu-sub nav flex-column">
+				<li class="nav-item"><a href="\test" class="nav-link">Manager</a></li>
+				<li class="nav-item"><a href="\test\archive" class="nav-link">Archive</a></li>
+				<li class="nav-item"><a href="\attempt" class="nav-link">Attempts</a></li>
+				<li class="nav-item"><a href="\test\create" class="nav-link">Create Test</a></li>
+			</ul>
+
+			<!-- USER -->
+			<a href="\" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon ion-ios-people-outline tx-24"></i>
+					<span class="menu-item-label">Accounts</span>
+					<i class="menu-item-arrow fa fa-angle-down"></i>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+			<ul class="br-menu-sub nav flex-column">
+				<li class="nav-item"><a href="\user" class="nav-link">Manager</a></li>
+				<li class="nav-item"><a href="\user\create" class="nav-link">Create Account</a></li>
+				<!--<li class="nav-item"><a href="\user\{{ auth()->user()->id }}\edit" class="nav-link">Edit Account</a></li>-->
+			</ul>
+
+			<!-- MULTILINK -->
+			<a href="\" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
+					<span class="menu-item-label">Debbuging</span>
+					<i class="menu-item-arrow fa fa-angle-down"></i>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+			<ul class="br-menu-sub nav flex-column">
+				<li class="nav-item"><a href="\welcome" class="nav-link">Welcome</a></li>
+				<li class="nav-item"><a href="\login" class="nav-link">Login</a></li>
+				<li class="nav-item"><a href="\signup" class="nav-link">Signup</a></li>
+				<li class="nav-item"><a href="\user" class="nav-link">Account Management</a></li>
+				<li class="nav-item"><a href="\course" class="nav-link">Course Management</a></li>
+				<li class="nav-item"><a href="\test" class="nav-link">Test Management</a></li>
+				<li class="nav-item"><a href="\test\archive" class="nav-link">Test Archive</a></li>
+				<li class="nav-item"><a href="\attempt" class="nav-link">Attempts</a></li>
+				<li class="nav-item"><a href="\take-test" class="nav-link">Test Taking</a></li>
+				<li class="nav-item"><a href="\edit-test" class="nav-link">Test Editing</a></li>
+				<li class="nav-item"><a href="\test-results" class="nav-link">Test Results</a></li>
+				<li class="nav-item"><a href="\course-edit" class="nav-link">Course Editing</a></li>
+				<li class="nav-item"><a href="\account-page" class="nav-link">Account Page</a></li>
+				<li class="nav-item"><a href="\account-manager\create" class="nav-link">Create Account</a></li>
+				<li class="nav-item"><a href="\modal-template" class="nav-link">Modal Template</a></li>
+			</ul>
+		@endif
+
+		@if(auth()->user()->hasRole('faculty'))
+			<!-- TAKE ARCHIVE -->
+			<a href="\test\archive" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon fa fa-list tx-22"></i>
+					<span class="menu-item-label">Test Archive</span>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+
+			<!-- TEST MANAGER -->
+			<a href="\test" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon ion-ios-albums-outline tx-22"></i>
+					<span class="menu-item-label">Test Manager</span>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+
+			<!-- ATTEMPTS -->
+			<a href="\attempt" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon fa fa-pencil-square-o tx-22"></i>
+					<span class="menu-item-label">Attempts</span>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+			
+			<!-- TEST CREATE -->
+			<a href="\test\create" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon fa fa-plus-square-o tx-22"></i>
+					<span class="menu-item-label">Create Test</span>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+		@endif
+
+		@if(auth()->user()->hasRole('student'))
+			<!-- TAKE ARCHIVE -->
+			<a href="\test\archive" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon fa fa-list tx-22"></i>
+					<span class="menu-item-label">Test Archive</span>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+
+			<!-- ATTEMPTS -->
+			<a href="\attempt" class="br-menu-link">
+				<div class="br-menu-item">
+					<i class="menu-item-icon icon fa fa-pencil-square-o tx-22"></i>
+					<span class="menu-item-label">Attempts</span>
+				</div><!-- menu-item -->
+			</a><!-- br-menu-link -->
+		@endif
     </div><!-- br-sideleft-menu -->
 
     <!--

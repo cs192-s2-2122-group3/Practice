@@ -106,10 +106,23 @@
         $(function () {
             'use strict'
             
-            fetch_items();
             function fetch_items() {
                 var $request = $.get('/test/{{ $test->id }}/items/fetch'); // make request
                 var $container = $('#question_container');
+
+                $container.addClass('loading'); // add loading class (optional)
+
+                $request.done(function(data) { // success
+                    $container.html(data.html);
+                });
+                $request.always(function() {
+                    $container.removeClass('loading');
+                });
+            }
+
+            function fetch_answers(id) {
+                var $request = $.get('/test/{{ $test->id }}/items/'+id+'/answer/fetch'); // make request
+                var $container = $('#answer_container'+id);
 
                 $container.addClass('loading'); // add loading class (optional)
 
@@ -163,6 +176,9 @@
                 });
 
                 $(document).on('click', '#add_answer', function(event) {
+                    event.preventDefault();
+
+                    var val = $(this).attr('value');
 
                     $.ajaxSetup({
                         headers: {
@@ -172,17 +188,19 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "/test/{{ $test->id }}/items/"+$(this).attr('value')+"/answer",
+                        url: "/test/{{ $test->id }}/items/"+val+"/answer",
                         data: null,
                         dataType: "json",
                         success: function () {
-                            fetch_items();
+                            fetch_answers(val);
                         }
                     });
                 });
 
                 $(document).on('click', '#remove_answer', function(event) {
                     event.preventDefault();
+
+                    var val = $(this).attr('value');
 
                     $.ajaxSetup({
                         headers: {
@@ -192,14 +210,17 @@
 
                     $.ajax({
                         type: "DELETE",
-                        url: "/test/{{ $test->id }}/items/"+$(this).attr('value')+"/answer",
+                        url: "/test/{{ $test->id }}/items/"+val+"/answer",
                         data: null,
                         dataType: "json",
                         success: function () {
-                            fetch_items();
+                            fetch_answers(val);
                         }
                     });
                 });
+
+                
+
                 /*
                 $(document).on('click', 'form', function(event) {
 

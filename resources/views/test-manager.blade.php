@@ -144,6 +144,7 @@
                             <th class="tx-10-force tx-mont tx-medium">Test Name</th>
                             <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Date Created</th>
                             <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Author</th>
+                            <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Course</th>
                             <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Status</th>
                             <th class="wd-5p"></th>
                         </tr>
@@ -166,6 +167,7 @@
                             </td>
                             <td class="hidden-xs-down"> {{ $test->created_at }} </td>
                             <td class="hidden-xs-down"> {{ $test->user()->first()->first_name.' '.$test->user()->first()->last_name }} </td>
+                            <td class="hidden-xs-down"> {{ $test->course()->first()->title }} </td>
                             <td class="hidden-xs-down"> {{ $test->state == 1 ? "Published":"Draft" }} </td>
                             <td class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info"><i

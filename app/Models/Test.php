@@ -41,4 +41,9 @@ class Test extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function attempts()
+    {
+        return $this->hasMany(Attempt::class);
+    }
 }

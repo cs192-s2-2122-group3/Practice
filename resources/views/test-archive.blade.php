@@ -37,8 +37,9 @@
     <!-- =========== START: MAIN PANEL =========== -->
     <div class="br-subleft">
         <div class="pd-10">
-            <a href="/test/create" class="btn btn-teal bd-0 btn-compose"><i class="icon ion-ios-compose-outline"></i>
-                New Test</a>
+            <a href="{{ $tests->count() ? "/test/".$tests->random()->id."/take":"" }}" class="btn btn-teal bd-0 btn-compose">
+                <i class="fa fa-pencil"></i> Random Test
+            </a>
         </div>
 
         <h6 class="tx-uppercase tx-10 tx-mont tx-spacing-1 mg-t-10 pd-x-10 tx-white-7">Filter Tests</h6>

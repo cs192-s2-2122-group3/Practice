@@ -46,10 +46,10 @@ class AnswersController extends Controller
         ]);
     }
 
-    public function fetch($id)
+    public function fetch($test_id,$id)
     {
-        $answers = Answer::where('item_id',(int)$id)->orderBy('id', 'ASC')->get();
-        $html = view('test-items-table', compact('answers'))->render();
+        $item = Item::findOrFail($id);
+        $html = view('test-items-answers', compact('item'))->render();
         return response()->json(compact('html'));
     }
 }

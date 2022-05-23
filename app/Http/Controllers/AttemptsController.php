@@ -21,11 +21,24 @@ class AttemptsController extends Controller
 {
     public function index()
     {
-        $attempts = auth()->user()->attempts()->paginate(10);
+        $user = auth()->user();
+        if($user->hasRole('admin') || $user->hasRole('faculty')) {
+            $tests = $user->tests()->pluck('id');
+            $attempts = Attempt::whereIn('test_id',$tests)->paginate(10);
         
-        return view('attempt-manager', [
-            'attempts' => $attempts,
-        ]);
+            return view('attempt-manager', [
+                'attempts' => $attempts,
+            ]);
+        }
+
+        if($user->hasRole('student')) {
+            $attempts = auth()->user()->attempts()->paginate(10);
+        
+            return view('attempt-manager', [
+                'attempts' => $attempts,
+            ]);
+        }
+        
     }
 
     public function evaluate(Request $request, $id)

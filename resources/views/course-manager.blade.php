@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@push('styles')
+    <link href="{{ URL::asset('/lib/highlightjs/github.css'); }}" rel="stylesheet">
+@endpush
 
-    <title>Practice - Manage Courses</title>
+@push('scripts')
+    <script src="{{ URL::asset('/lib/highlightjs/highlight.pack.js'); }}"></script>
+@endpush
 
-    <!-- vendor css -->
-    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../lib/Ionicons/css/ionicons.css" rel="stylesheet">
-    <link href="../lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link href="../lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
-
-    <!-- Bracket CSS -->
-    <link rel="stylesheet" href="../css/bracket.css">
-</head>
-
-<body class="collapsed-menu with-subleft">
-
-    <!-- =========== START: LEFT PANEL =========== -->
-    @include('layouts.lpanel')
-    <!-- ============ END: LEFT PANEL ============ -->
-
-
-    <!-- =========== START: HEAD PANEL =========== -->
-    @include('layouts.hpanel')
-    <!-- ============ END: HEAD PANEL ============ -->
-
-
-    <!-- ========== START: RIGHT PANEL =========== -->
-    @include('layouts.rpanel')
-    <!-- =========== END: RIGHT PANEL ============ -->
-
-    <!-- =========== START: MAIN PANEL =========== -->
+@section('content')
     <div class="br-subleft">
         <div class="pd-10">
-            <a href="" class="btn btn-teal bd-0 btn-compose"><i class="icon ion-ios-compose-outline"></i> New Course</a>
+            <a href="/course/create" class="btn btn-teal bd-0 btn-compose"><i class="icon ion-ios-compose-outline"></i> New Course</a>
         </div>
 
         <h6 class="tx-uppercase tx-10 tx-mont tx-spacing-1 mg-t-10 pd-x-10 tx-white-7">Filter Course</h6>
@@ -104,10 +78,10 @@
 
             <div class="btn-group mg-l-auto hidden-sm-down">
                 <!-- 
-                  <a href="#" class="btn btn-outline-info active">All</a>
-                  <a href="#" class="btn btn-outline-info">ID</a>
-                  <a href="#" class="btn btn-outline-info">Date</a>
-                  <a href="#" class="btn btn-outline-info">Students</a>
+                <a href="#" class="btn btn-outline-info active">All</a>
+                <a href="#" class="btn btn-outline-info">ID</a>
+                <a href="#" class="btn btn-outline-info">Date</a>
+                <a href="#" class="btn btn-outline-info">Students</a>
                 -->
                 <a href="/course/create" class="btn btn-outline-info">Create</a>
                 <a href="#" class="btn btn-outline-info">Delete</a>
@@ -121,10 +95,10 @@
                 <div class="dropdown-menu dropdown-menu-right pd-10">
 
                     <nav class="nav nav-style-1 flex-column">
-                      <a href="#" class="nav-link">All</a>
-                      <a href="#" class="nav-link">ID</a>
-                      <a href="#" class="nav-link">Date</a>
-                      <a href="#" class="nav-link">Students</a>
+                    <a href="#" class="nav-link">All</a>
+                    <a href="#" class="nav-link">ID</a>
+                    <a href="#" class="nav-link">Date</a>
+                    <a href="#" class="nav-link">Students</a>
                     </nav>
                 </div>
                 -->
@@ -134,83 +108,8 @@
         </div><!-- d-flex -->
 
         <div class="br-pagebody pd-x-20 pd-sm-x-30">
-            <div class="card bd-0 shadow-base">
-                <table class="table mg-b-0">
-
-                    <thead>
-                        <tr>
-                            <th class="wd-5p">
-                                <label class="ckbox mg-b-0">
-                                    <input type="checkbox"><span></span>
-                                </label>
-                            </th>
-                            <th class="wd-5p hidden-xs-down">ID</th>
-                            <th class="tx-10-force tx-mont tx-medium">Course Name</th>
-                            <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Date Created</th>
-                            <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Handler</th>
-                            <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Students</th>
-                            <th class="wd-5p"></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($courses as $course)
-                        <tr>
-                            <!-- CHECK BOX -->
-                            <td class="valign-middle">
-                                <label class="ckbox mg-b-0">
-                                    <input type="checkbox"><span></span>
-                                </label>
-                            </td>
-
-                            <!-- COURSE ID -->
-                            <td class="hidden-xs-down">{{ $course->id }}</td>
-
-                            <!-- COURSE TITLE -->
-                            <td>
-                                <i class="icon ion-ios-folder-outline tx-24 tx-warning lh-0 valign-middle"></i>
-                                <!--<i class="fa fa-book tx-22 tx-danger lh-0 valign-middle"></i>-->
-                                <span class="pd-l-5">{{ $course->title }}</span>
-                            </td>
-
-                            <!-- COURSE - CREATED AT -->
-                            <td class="hidden-xs-down">{{ $course->created_at->format('d/m/Y - h:m') }}</td>
-
-                            <!-- COURSE HANDLER -->
-                            <td class="hidden-xs-down">
-                                @if($course->handlers->first())
-                                    {{ $course->handlers->first()->first_name.' '.$course->handlers->first()->last_name }}
-                                @endif
-                            </td>
-
-                            <!-- COURSE STUDENT COUNT -->
-                            <td class="hidden-xs-down">
-                            {{ $course->students->count() }}
-                            </td>
-
-                            <!-- DROPDOWN MENU OPTIONS -->
-                            <td class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info"><i
-                                        class="icon ion-more"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right pd-10">
-                                    <nav class="nav nav-style-1 flex-column">
-                                        <a href="" class="nav-link">Info</a>
-                                        <a href="" class="nav-link">Rename</a>
-                                        <a href="/course/{{ $course->id }}/edit" class="nav-link">Edit</a>
-                                        <form action="/course/{{ $course->id }}" method='POST'> @csrf @method('delete')
-                                            <button type="submit" class="nav-link btn-link btn-block text-left">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </nav>
-                                </div><!-- dropdown-menu -->
-                            </td>
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-                {{ $courses->links('layouts.pagination') }}
+            <div class="card bd-0 shadow-base" id="courses_container">
+                @include('course-table', ['courses'=>$courses])
             </div>
         </div><!-- br-pagebody -->
         <footer class="br-footer">
@@ -220,22 +119,15 @@
             </div>
         </footer>
     </div><!-- br-contentpanel -->
+@endsection
 
-    <!-- ============ END: MAIN PANEL ============ -->
-
-    <script src="../lib/jquery/jquery.js"></script>
-    <script src="../lib/popper.js/popper.js"></script>
-    <script src="../lib/bootstrap/bootstrap.js"></script>
-    <script src="../lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="../lib/moment/moment.js"></script>
-    <script src="../lib/jquery-ui/jquery-ui.js"></script>
-    <script src="../lib/jquery-switchbutton/jquery.switchButton.js"></script>
-    <script src="../lib/peity/jquery.peity.js"></script>
-
-    <script src="../js/bracket.js"></script>
+@push('custom_scripts')
     <script>
         $(function () {
             'use strict';
+
+            // add classes to body
+            $('body').addClass('collapsed-menu with-subleft');
 
             // show only the icons and hide left menu label by default
             $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
@@ -267,6 +159,19 @@
                 }
             });
 
+            $(document).ready(function() {
+                $(document).on('click', '.page-link', function(event) {
+                    event.preventDefault();
+                    var page = $(this).attr('href').split('page=')[1];
+                    $.ajax({
+                        url:"/course/fetch?page="+page,
+                        success:function(data) {
+                            $('#courses_container').html(data);
+                        }
+                    });
+                });
+            });
+
             // Showing sub left menu
             $('#showSubLeft').on('click', function () {
                 if ($('body').hasClass('show-subleft')) {
@@ -277,8 +182,5 @@
             });
 
         });
-
     </script>
-</body>
-
-</html>
+@endpush

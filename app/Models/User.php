@@ -100,4 +100,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Attempt::class);
     }
+
+    public function hasRole($role)
+    {
+        return $this->role == $role;
+    }
 }

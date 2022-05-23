@@ -30,6 +30,15 @@ class CoursesController extends Controller
         ]);
     }
 
+    public function fetch_courses(Request $request)
+    {
+        if($request->ajax()) {
+            $courses = Course::paginate(10);
+            $html = view('course-table', compact(['courses']))->render();
+            return $html;
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,6 +67,26 @@ class CoursesController extends Controller
             'students'  => $students,
             'page'      => $page,
         ]);
+    }
+
+    public function fetch_create(Request $request)
+    {
+        if($request->ajax()) {
+            $page = $this->check_page();
+
+            $faculties = User::where('role','faculty')
+                                ->orWhere('role','admin')
+                                ->paginate(10, ['*'], 'faculty_page');
+
+            $students = User::where('role','student')
+                                ->paginate(10, ['*'], 'student_page');
+
+            return view('course-create-table', [
+                'faculties' => $faculties,
+                'students'  => $students,
+                'page'      => $page,
+            ])->render();
+        }
     }
 
     /**
@@ -123,6 +152,29 @@ class CoursesController extends Controller
         ]);
     }
 
+    public function fetch_edit(Request $request, $id)
+    {
+        if($request->ajax()) {
+            $course = Course::find($id);
+
+            $page = $this->check_page();
+
+            $faculties = User::where('role','faculty')
+                                ->orWhere('role','admin')
+                                ->paginate(10, ['*'], 'faculty_page');
+
+            $students = User::where('role','student')
+                                ->paginate(10, ['*'], 'student_page');
+            
+            return view('/course-edit-table', [
+                'faculties' => $faculties,
+                'students'  => $students,
+                'course'    => $course,
+                'page'      => $page,
+            ])->render();
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -168,7 +220,7 @@ class CoursesController extends Controller
         }
         
         session()->put('added_users',$added_users);
-        return redirect()->back();
+        return view('/course-create-table-list')->render();
     }
 
     public function create_remove_user(Request $request, $id)
@@ -180,7 +232,7 @@ class CoursesController extends Controller
         }
         
         session()->put('added_users',$added_users);
-        return redirect()->back();
+        return view('/course-create-table-list')->render();
     }
 
     public function edit_add_user(Request $request, $course_id, $id)
@@ -188,7 +240,7 @@ class CoursesController extends Controller
         $user = User::findOrFail($id);
         $course = Course::findOrFail($course_id);
         $course->users()->attach($user->id,['is_handler' => ($user->role === 'faculty' || $user->role === 'admin')]);
-        return redirect()->back();
+        return view('/course-edit-table-list',['course'=>$course])->render();
     }
 
     public function edit_remove_user(Request $request, $course_id, $id)
@@ -196,7 +248,7 @@ class CoursesController extends Controller
         $user = User::findOrFail($id);
         $course = Course::findOrFail($course_id);
         $course->users()->detach($user->id);
-        return redirect()->back();
+        return view('/course-edit-table-list',['course'=>$course])->render();
     }
 
     private function check_page() {

@@ -36,16 +36,11 @@
 
     <!-- =========== START: MAIN PANEL =========== -->
     <div class="br-subleft">
-        <div class="pd-10">
-            <a href="/test/create" class="btn btn-teal bd-0 btn-compose"><i class="icon ion-ios-compose-outline"></i>
-                New Test</a>
-        </div>
-
         <h6 class="tx-uppercase tx-10 tx-mont tx-spacing-1 mg-t-10 pd-x-10 tx-white-7">Filter Attempts</h6>
 
         <div class="mg-t-20 pd-x-10 mg-b-40">
             <div class="form-group">
-                <input type="text" class="form-control form-control-inverse tx-13" placeholder="Enter Test Title">
+                <input type="text" class="form-control form-control-inverse tx-13" placeholder="Enter Attempt Title">
             </div><!-- form-group -->
             <div class="form-group">
                 <select class="form-control form-control-inverse tx-13 select1" data-placeholder="Course">
@@ -93,7 +88,9 @@
                             <th class="tx-10-force tx-mont tx-medium">Test Name</th>
                             <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Date Created</th>
                             <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Author</th>
+                            <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Taken by</th>
                             <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Course</th>
+                            <th class="tx-10-force tx-mont tx-medium hidden-xs-down">Score</th>
                             <th class="wd-5p"></th>
                         </tr>
                     </thead>
@@ -110,7 +107,9 @@
                             </td>
                             <td class="hidden-xs-down"> {{ $attempt->created_at }} </td>
                             <td class="hidden-xs-down"> {{  $attempt->test->user()->first()->first_name.' '. $attempt->test->user()->first()->last_name }} </td>
+                            <td class="hidden-xs-down"> {{  $attempt->user()->first()->first_name.' '. $attempt->user()->first()->last_name }} </td>
                             <td class="hidden-xs-down"> {{  $attempt->test->course->title }} </td>
+                            <td class="hidden-xs-down"> {{  $attempt->score }}/{{  $attempt->test->count }} </td>
                             <td class="dropdown">
                                 <a href="/test/{{ $attempt->test->id }}/attempt/{{ $attempt->id }}" class="btn pd-y-3 tx-gray-500 hover-info"><i class="fa fa-search"></i></a>
                             </td>

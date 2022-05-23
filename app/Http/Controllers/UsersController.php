@@ -29,6 +29,15 @@ class UsersController extends Controller
         ]);
     }
 
+    public function fetch_users(Request $request)
+    {
+        if($request->ajax()) {
+            $users = User::paginate(10);
+            $html = view('account-table', compact(['users']))->render();
+            return $html;
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -152,12 +161,6 @@ class UsersController extends Controller
         return redirect('/user');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  array<int> $ids
-     * @return \Illuminate\Http\Response
-     */
     public function destroyMany(array $ids)
     {
         $user = User::whereIn('id', $ids)->delete;

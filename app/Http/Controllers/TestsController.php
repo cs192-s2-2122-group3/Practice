@@ -23,7 +23,7 @@ class TestsController extends Controller
      */
     public function index()
     {
-        $tests = Test::paginate(10);
+        $tests = auth()->user()->tests()->paginate(10);
         
         return view('test-manager', [
             'tests' => $tests,
@@ -141,7 +141,13 @@ class TestsController extends Controller
 
     public function archive()
     {
-        $tests = Test::paginate(10);
+        $user = auth()->user();
+        $courses = $user->courses()->pluck('id');
+
+        if($user->hasRole('admin') || $user->hasRole('faculty'))
+            $tests = Test::whereIn('course_id',$courses)->paginate(10);
+        else
+                $tests = Test::whereIn('course_id',$courses)->where('state',1)->paginate(10);
         
         return view('test-archive', [
             'tests' => $tests,
