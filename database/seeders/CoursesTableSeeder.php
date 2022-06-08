@@ -14,7 +14,7 @@ class CoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Course::factory(50)->create();
+        // \App\Models\Course::factory(50)->create();
 
         $sample = \App\Models\Course::create([
             'title'             => 'CS 192',
@@ -22,9 +22,12 @@ class CoursesTableSeeder extends Seeder
         ]);
         
         $sample->users()->attach(1, ['is_handler' => 1]);
+        $sample->users()->attach(3, ['is_handler' => 1]);
+        $sample->users()->attach(4, ['is_handler' => 1]);
+        $sample->users()->attach(5, ['is_handler' => 1]);
 
         foreach(\App\Models\Course::all() as $course) {
-            $users = \App\Models\User::inRandomOrder()->take(rand(5,10))->get();
+            $users = \App\Models\User::inRandomOrder()->take(rand(10,20))->get();
 
             foreach($users as $user) {
                 $course->users()->attach($user->id,['is_handler' => ($user->role === 'faculty' || $user->role === 'admin')]);

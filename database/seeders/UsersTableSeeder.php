@@ -47,6 +47,51 @@ class UsersTableSeeder extends Seeder
 
         \App\Models\User::create([
             // names
+            'first_name'        => 'Lorenzo',
+            'middle_name'       => 'Cruz',
+            'last_name'         => 'Sotto',
+            'user_name'         => 'Renzo',
+            // additional info
+            'birth_date'        => now(),
+            'role'              => 'admin',
+            // account details
+            'email'             => 'jcsotto1@up.edu.ph',
+            'password'          => Hash::make('password'),
+            'description'       => 'rawr rawr',
+        ]);
+
+        \App\Models\User::create([
+            // names
+            'first_name'        => 'Angel',
+            'middle_name'       => 'Jumaquio',
+            'last_name'         => 'Hernandez',
+            'user_name'         => 'Angel',
+            // additional info
+            'birth_date'        => now(),
+            'role'              => 'admin',
+            // account details
+            'email'             => 'ajhernandez2@up.edu.ph',
+            'password'          => Hash::make('password'),
+            'description'       => 'rawr rawr',
+        ]);
+
+        \App\Models\User::create([
+            // names
+            'first_name'        => 'Julia',
+            'middle_name'       => 'rawr',
+            'last_name'         => 'Ysobel',
+            'user_name'         => 'Julia',
+            // additional info
+            'birth_date'        => now(),
+            'role'              => 'admin',
+            // account details
+            'email'             => 'jypineda@up.edu.ph',
+            'password'          => Hash::make('password'),
+            'description'       => 'rawr rawr',
+        ]);
+
+        \App\Models\User::create([
+            // names
             'first_name'        => 'Admin',
             'middle_name'       => 'New',
             'last_name'         => 'Sample',
@@ -90,6 +135,6 @@ class UsersTableSeeder extends Seeder
             'description'       => 'I am a student',
         ]);
 
-        \App\Models\User::factory(100)->create();
+        // \App\Models\User::factory(100)->create();
     }
 }

@@ -24,6 +24,6 @@ class TestsTableSeeder extends Seeder
             'count'             => 7,
         ]);
 
-        \App\Models\Test::factory(100)->create();
+        // \App\Models\Test::factory(100)->create();
     }
 }
